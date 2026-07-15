@@ -220,119 +220,52 @@ padding:40px;
   <link rel="stylesheet" href="css/alma-sms.css">
   <link rel="stylesheet" href="css/alma-enhancement.css">
   <link rel="stylesheet" href="css/alma-insurance.css">
+  <link rel="stylesheet" href="css/alma-header-v2.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg">
 
-<div class="container">
+<!-- ALMA_MAIN_HEADER_START -->
+<div id="almaMainHeader">
+  <div class="alma-main-header-inner">
 
-<a class="navbar-brand" href="#">
+    <a class="alma-main-brand" href="#beranda">
+      <span class="alma-main-brand-icon">A</span>
 
-almaMobiiee - Auto 2000
+      <span class="alma-main-brand-copy">
+        <strong>almaMobiiee</strong>
+        <small>Automotive & Mobility</small>
+      </span>
+    </a>
 
-</a>
+    <button
+      id="almaMenuButton"
+      type="button"
+      onclick="almaToggleMainMenu()"
+      aria-label="Buka menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
 
-<button class="navbar-toggler bg-light"
+    <nav id="almaMainNav">
+      <a href="#beranda">Beranda</a>
+      <a href="#mobil">Mobil Baru</a>
+      <a href="#mobil-second">Mobil Second</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#asuransi">Asuransi</a>
+      <a href="#promo">Promo</a>
+      <a href="#simulasi">Simulasi</a>
+      <a href="#permintaan-unit">Permintaan Unit</a>
+      <a href="#kontak">Kontak</a>
+      <a class="alma-admin-menu" href="admin/">Admin</a>
+    </nav>
 
-data-bs-toggle="collapse"
-
-data-bs-target="#menu">
-
-<span class="navbar-toggler-icon"></span>
-
-</button>
-
-<div class="collapse navbar-collapse"
-
-id="menu">
-
-<ul class="navbar-nav ms-auto">
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#beranda">
-
-Beranda
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#mobil">
-
-Mobil
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#promo">
-
-Promo
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#simulasi">
-
-Simulasi
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#request">
-
-Permintaan Unit
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="#kontak">
-
-Kontak
-
-</a>
-
-</li>
-
-</ul>
-
+  </div>
 </div>
+<!-- ALMA_MAIN_HEADER_END -->
 
-</div>
-
-
-<a class="alma-extra-nav-link" href="#accessories">Accessories</a>
-
-<a class="alma-extra-nav-link" href="#asuransi">Asuransi</a>
-</nav>
 
 <section
 
@@ -2596,6 +2529,7 @@ window.open(
 <!-- ALMA_SMS_END -->
 
 
+<script src="js/alma-header-v2.js"></script>
 </body>
 
 </html>
