@@ -394,3 +394,207 @@
     text-align:left;
   }
 }
+
+/* ALMA SECOND SELLER FORM V1 */
+
+.alma-second-seller-section{
+  background:#f6f7f9;
+}
+
+.alma-second-seller-form{
+  width:100%;
+  max-width:1000px;
+  margin:32px auto 0;
+  box-sizing:border-box;
+}
+
+.alma-second-seller-form h3{
+  margin:0 0 8px;
+}
+
+.alma-second-seller-intro{
+  max-width:680px;
+  margin:0 0 28px;
+  color:#667085;
+  font-size:14px;
+  line-height:1.7;
+}
+
+
+/* GRID 2 KOLOM */
+
+.alma-second-seller-grid{
+  display:grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+  gap:20px 24px;
+}
+
+.alma-second-seller-grid label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:0;
+  margin:0;
+}
+
+.alma-second-seller-grid label > span{
+  color:#334155;
+  font-size:13px;
+  font-weight:800;
+}
+
+
+/* INPUT */
+
+.alma-second-seller-grid input,
+.alma-second-seller-grid select,
+.alma-second-seller-grid textarea{
+  width:100%;
+  min-height:50px;
+  box-sizing:border-box;
+
+  margin:0;
+  padding:13px 14px;
+
+  border:1px solid #dbe1e8;
+  border-radius:13px;
+
+  outline:none;
+  background:#ffffff;
+  color:#111827;
+
+  font:inherit;
+  font-size:14px;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.alma-second-seller-grid input:focus,
+.alma-second-seller-grid select:focus,
+.alma-second-seller-grid textarea:focus{
+  border-color:#e30613;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(227,6,19,.08);
+}
+
+.alma-second-seller-grid textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+
+/* FULL WIDTH */
+
+.alma-second-seller-wide{
+  grid-column:1 / -1;
+}
+
+
+/* UPLOAD */
+
+.alma-second-seller-upload{
+  padding:18px;
+
+  border:1px dashed #cbd5e1;
+  border-radius:16px;
+
+  background:#f8fafc;
+}
+
+.alma-second-seller-upload input{
+  background:#ffffff;
+}
+
+.alma-second-seller-upload small{
+  color:#64748b;
+  font-size:11px;
+  line-height:1.6;
+}
+
+
+/* FOOTER */
+
+.alma-second-seller-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:24px;
+
+  margin-top:28px;
+  padding-top:24px;
+
+  border-top:1px solid #eef2f7;
+}
+
+.alma-second-seller-note{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  max-width:580px;
+}
+
+.alma-second-seller-note strong{
+  display:grid;
+  place-items:center;
+
+  flex:0 0 auto;
+
+  width:30px;
+  height:30px;
+
+  border-radius:50%;
+
+  background:#dcfce7;
+  color:#15803d;
+
+  font-size:13px;
+}
+
+.alma-second-seller-note p{
+  margin:0;
+
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.alma-second-seller-footer
+.form-submit-button{
+  flex:0 0 auto;
+  width:auto;
+  min-width:190px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+  .alma-second-seller-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .alma-second-seller-wide{
+    grid-column:1;
+  }
+
+  .alma-second-seller-footer{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .alma-second-seller-footer
+  .form-submit-button{
+    width:100%;
+  }
+
+}

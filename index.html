@@ -839,6 +839,266 @@
 
 
 
+
+<!-- =========================================
+     DAFTAR PENJUAL MOBIL SECOND
+========================================= -->
+
+<section
+  class="section alma-second-seller-section"
+  id="penjual-mobil-second"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="section-label">
+          Used Car Seller
+        </span>
+
+        <h2>
+          Daftar Sebagai Penjual Mobil Second
+        </h2>
+
+      </div>
+
+      <p>
+        Daftarkan mobil Anda untuk proses review.
+        Data kendaraan akan diperiksa terlebih dahulu
+        sebelum ditampilkan atau ditindaklanjuti oleh Alma.
+      </p>
+
+    </div>
+
+
+    <form
+      class="premium-form alma-second-seller-form"
+      id="usedCarSellerForm"
+    >
+
+      <h3>
+        Data Penjual & Kendaraan
+      </h3>
+
+      <p class="alma-second-seller-intro">
+        Lengkapi informasi berikut dengan data yang benar
+        agar proses review kendaraan lebih mudah.
+      </p>
+
+
+      <div class="alma-second-seller-grid">
+
+        <label>
+          <span>Nama Penjual</span>
+
+          <input
+            type="text"
+            id="sellerName"
+            name="sellerName"
+            placeholder="Nama lengkap"
+            autocomplete="name"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Nomor HP / WhatsApp</span>
+
+          <input
+            type="tel"
+            id="sellerPhone"
+            name="sellerPhone"
+            placeholder="Contoh: 081234567890"
+            autocomplete="tel"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Merek Mobil</span>
+
+          <input
+            type="text"
+            id="sellerCarBrand"
+            name="carBrand"
+            placeholder="Contoh: Toyota"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Model / Tipe Mobil</span>
+
+          <input
+            type="text"
+            id="sellerCarModel"
+            name="carModel"
+            placeholder="Contoh: Avanza G"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Tahun Kendaraan</span>
+
+          <input
+            type="number"
+            id="sellerCarYear"
+            name="carYear"
+            placeholder="Contoh: 2022"
+            min="1990"
+            max="2030"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Transmisi</span>
+
+          <select
+            id="sellerCarTransmission"
+            name="transmission"
+            required
+          >
+            <option value="">
+              Pilih transmisi
+            </option>
+
+            <option value="Manual">
+              Manual
+            </option>
+
+            <option value="Automatic">
+              Automatic
+            </option>
+
+            <option value="CVT">
+              CVT
+            </option>
+          </select>
+        </label>
+
+
+        <label>
+          <span>Kilometer</span>
+
+          <input
+            type="number"
+            id="sellerCarMileage"
+            name="mileage"
+            placeholder="Contoh: 35000"
+            min="0"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Warna Kendaraan</span>
+
+          <input
+            type="text"
+            id="sellerCarColor"
+            name="carColor"
+            placeholder="Contoh: Putih"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Lokasi Kendaraan</span>
+
+          <input
+            type="text"
+            id="sellerCarLocation"
+            name="carLocation"
+            placeholder="Contoh: BSD, Tangerang"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Harga yang Diharapkan</span>
+
+          <input
+            type="text"
+            id="sellerCarPrice"
+            name="expectedPrice"
+            placeholder="Contoh: Rp 185.000.000"
+            required
+          >
+        </label>
+
+
+        <label class="alma-second-seller-wide">
+          <span>Deskripsi Kondisi Mobil</span>
+
+          <textarea
+            id="sellerCarDescription"
+            name="description"
+            placeholder="Ceritakan kondisi kendaraan, riwayat servis, pajak, kondisi ban, body, interior, dan informasi penting lainnya."
+            required
+          ></textarea>
+        </label>
+
+
+        <label class="alma-second-seller-wide alma-second-seller-upload">
+          <span>Foto Mobil</span>
+
+          <input
+            type="file"
+            id="sellerCarPhoto"
+            name="carPhoto"
+            accept="image/*"
+          >
+
+          <small>
+            Pilih foto kendaraan yang jelas.
+            Data akan direview sebelum diproses lebih lanjut.
+          </small>
+        </label>
+
+      </div>
+
+
+      <div class="alma-second-seller-footer">
+
+        <div class="alma-second-seller-note">
+          <strong>✓</strong>
+
+          <p>
+            Pendaftaran tidak menjamin kendaraan langsung
+            dipublikasikan. Data akan melalui proses review.
+          </p>
+        </div>
+
+
+        <button
+          type="submit"
+          class="form-submit-button"
+        >
+          Kirim Pendaftaran
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
 <!-- =========================================
      SIMULASI
 ========================================= -->
