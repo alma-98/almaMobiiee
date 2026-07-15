@@ -118,3 +118,82 @@
     bottom:14px;
   }
 }
+
+/* =========================================
+   QRIS MOBIL SECOND
+========================================= */
+
+.alma-qris-payment{
+  margin-top:20px;
+  padding:24px;
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+  background:#ffffff;
+  text-align:center;
+  box-shadow:0 18px 45px rgba(15,23,42,.08);
+}
+
+.alma-qris-label{
+  margin-bottom:6px;
+  color:#64748b;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.alma-qris-payment h3{
+  margin:0 0 18px;
+  color:#111827;
+  font-size:28px;
+}
+
+.alma-qris-image{
+  display:block;
+  width:min(100%,320px);
+  height:auto;
+  margin:0 auto 18px;
+  padding:10px;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  background:#ffffff;
+}
+
+.alma-qris-payment p{
+  max-width:520px;
+  margin:10px auto;
+  color:#475569;
+  line-height:1.7;
+}
+
+.alma-qris-note{
+  font-size:13px;
+  color:#64748b !important;
+}
+
+.alma-qris-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:14px;
+  padding:13px 22px;
+  border-radius:999px;
+  background:#e30613;
+  color:#ffffff !important;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.alma-qris-button:hover{
+  opacity:.9;
+}
+
+@media(max-width:600px){
+  .alma-qris-payment{
+    padding:18px;
+  }
+
+  .alma-qris-image{
+    width:min(100%,280px);
+  }
+}
