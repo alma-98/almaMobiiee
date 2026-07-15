@@ -54,7 +54,7 @@
     });
 
     document.querySelectorAll(
-      'a[href*="wa.me"], a[href*="whatsapp.com"], a[href^="https://api.whatsapp.com"], a[href^="whatsapp:"]'
+      'a[href*="wa.me"], a[href*="whatsapp.com"], a[href^="https://api.whatsapp.com"], a[href^="sms:"]'
     ).forEach(function(link){
       const originalText = link.textContent.trim();
 
