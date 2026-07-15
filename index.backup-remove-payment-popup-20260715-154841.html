@@ -929,15 +929,57 @@
 
       <div class="used-car-info">
 
-        
+        <div class="fee-card">
 
+          <span class="fee-label">
+            Biaya Layanan
+          </span>
+
+          <strong>
+            2,5%
+          </strong>
+
+          <p>
+            Perhitungan biaya layanan berdasarkan
+            harga kendaraan yang dimasukkan.
+          </p>
+
+        </div>
 
 
         <div class="payment-mini-card">
 
           
+<div class="alma-qris-payment">
+  <div class="alma-qris-label">Pembayaran</div>
+  <h3>QRIS</h3>
 
+  <img
+    src="assets/images/qris-alma.png"
+    alt="QRIS Pembayaran Alma"
+    class="alma-qris-image"
+    loading="lazy"
+  >
 
+  <p>
+    Scan QRIS untuk membayar biaya layanan
+    sebesar <strong>2,5% dari harga kendaraan</strong>.
+  </p>
+
+  <p class="alma-qris-note">
+    Setelah pembayaran, data akan masuk dengan status
+    menunggu verifikasi Admin Alma.
+  </p>
+
+  <a
+    href="assets/images/qris-alma.png"
+    target="_blank"
+    rel="noopener"
+    class="alma-qris-button"
+  >
+    Buka QRIS
+  </a>
+</div>
 
 
         </div>
@@ -945,183 +987,97 @@
       </div>
 
 
-      
-
-<form
-  class="premium-form alma-used-car-clean"
-  id="usedCarForm"
->
-
-  <div class="alma-used-car-clean-head">
-
-    <span class="alma-used-car-clean-icon">
-      🚘
-    </span>
-
-    <div>
-      <span class="alma-used-car-clean-eyebrow">
-        Mobil Second
-      </span>
-
-      <h3>
-        Jual Mobil Anda
-      </h3>
-
-      <p>
-        Isi data kendaraan untuk proses review oleh Admin Alma.
-      </p>
-    </div>
-
-  </div>
-
-
-  <div class="alma-used-car-clean-grid">
-
-    <label>
-      <span>Nama Pemilik</span>
-
-      <input
-        type="text"
-        id="sellerName"
-        name="ownerName"
-        placeholder="Nama lengkap"
-        autocomplete="name"
-        required
+      <form
+        class="premium-form"
+        id="usedCarForm"
       >
-    </label>
+
+        <h3>
+          Data Kendaraan
+        </h3>
+
+        <div class="two-column-form">
+
+          <label>
+            Nama Pemilik
+            <input
+              type="text"
+              id="sellerName"
+              required
+            >
+          </label>
+
+          <label>
+            Nomor HP
+            <input
+              type="tel"
+              id="sellerPhone"
+              required
+            >
+          </label>
+
+        </div>
 
 
-    <label>
-      <span>Nomor HP</span>
-
-      <input
-        type="tel"
-        id="sellerPhone"
-        name="phone"
-        placeholder="08xxxxxxxxxx"
-        autocomplete="tel"
-        required
-      >
-    </label>
+        <label>
+          Merek & Tipe Mobil
+          <input
+            type="text"
+            id="sellerCar"
+            placeholder="Contoh: Toyota Avanza G"
+            required
+          >
+        </label>
 
 
-    <label>
-      <span>Merek & Tipe Mobil</span>
+        <div class="two-column-form">
 
-      <input
-        type="text"
-        id="sellerCar"
-        name="car"
-        placeholder="Contoh: Toyota Avanza G"
-        required
-      >
-    </label>
+          <label>
+            Tahun
+            <input
+              type="number"
+              id="sellerYear"
+              required
+            >
+          </label>
 
+          <label>
+            Harga Mobil
+            <input
+              type="number"
+              id="sellerPrice"
+              min="1"
+              required
+            >
+          </label>
 
-    <label>
-      <span>Tahun</span>
-
-      <input
-        type="number"
-        id="sellerYear"
-        name="year"
-        placeholder="2022"
-        min="1980"
-        max="2030"
-        required
-      >
-    </label>
+        </div>
 
 
-    <label class="alma-used-car-wide">
-      <span>Harga Penawaran</span>
-
-      <div class="alma-price-input">
-        <strong>Rp</strong>
-
-        <input
-          type="number"
-          id="sellerPrice"
-          name="price"
-          placeholder="250000000"
-          min="1"
-          inputmode="numeric"
-          required
-        >
-      </div>
-
-      <small>
-        Masukkan nominal tanpa titik atau koma.
-      </small>
-    </label>
-
-
-    <label class="alma-used-car-wide">
-      <span>Foto Kendaraan</span>
-
-      <div class="alma-used-car-upload">
-        <input
-          type="file"
-          id="sellerImage"
-          name="image"
-          accept="image/jpeg,image/png,image/webp"
+        <div
+          class="fee-calculator"
+          id="sellerFeeBox"
         >
 
-        <small>
-          Format JPG, PNG, atau WebP.
-        </small>
-      </div>
-    </label>
+          <span>
+            Estimasi biaya layanan 2,5%
+          </span>
+
+          <strong id="sellerFee">
+            Rp0
+          </strong>
+
+        </div>
 
 
-    <div
-      id="sellerImagePreview"
-      class="alma-used-car-clean-preview"
-      hidden
-    >
-      <img
-        id="sellerImagePreviewImg"
-        alt="Preview foto kendaraan"
-      >
-    </div>
+        <button
+          type="submit"
+          class="form-submit-button"
+        >
+          Lanjutkan Pendaftaran
+        </button>
 
-
-    <label class="alma-used-car-wide">
-      <span>Kondisi / Catatan Kendaraan</span>
-
-      <textarea
-        id="sellerNotes"
-        name="notes"
-        rows="4"
-        placeholder="Ceritakan kondisi kendaraan, pajak, servis, dan informasi penting lainnya..."
-      ></textarea>
-    </label>
-
-  </div>
-
-
-  <div class="alma-used-car-clean-footer">
-
-    <div class="alma-used-car-review-note">
-      <span>✓</span>
-
-      <p>
-        Data kendaraan akan diperiksa terlebih dahulu sebelum diproses.
-      </p>
-    </div>
-
-    <button
-      type="submit"
-      class="alma-used-car-clean-submit"
-    >
-      Kirim untuk Review
-    </button>
-
-  </div>
-
-</form>
-
-
+      </form>
 
     </div>
 
@@ -1737,7 +1693,98 @@
 ></script>
 
 
+<!-- ALMA USED CAR PAYMENT MODAL START -->
 
+<div
+  id="almaUsedCarPaymentModal"
+  class="alma-payment-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="almaUsedCarPaymentTitle"
+>
+  <div class="alma-payment-card">
+
+    <button
+      id="almaUsedCarPaymentClose"
+      class="alma-payment-close"
+      type="button"
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
+    <h2 id="almaUsedCarPaymentTitle">
+      Ringkasan Pembayaran
+    </h2>
+
+    <p class="alma-payment-subtitle">
+      Periksa kembali data kendaraan dan nominal biaya layanan
+      sebelum melakukan pembayaran.
+    </p>
+
+    <div class="alma-payment-summary">
+
+      <div class="alma-payment-row">
+        <span>Pemilik</span>
+        <strong id="almaSummaryOwner">-</strong>
+      </div>
+
+      <div class="alma-payment-row">
+        <span>Kendaraan</span>
+        <strong id="almaSummaryCar">-</strong>
+      </div>
+
+      <div class="alma-payment-row">
+        <span>Harga Mobil</span>
+        <strong id="almaSummaryPrice">Rp0</strong>
+      </div>
+
+      <div class="alma-payment-row">
+        <span>Biaya Layanan</span>
+        <strong>2,5%</strong>
+      </div>
+
+      <div class="alma-payment-row alma-payment-total">
+        <span>Total yang Harus Dibayar</span>
+        <strong id="almaSummaryFee">Rp0</strong>
+      </div>
+
+    </div>
+
+    <div class="alma-payment-qris">
+
+      <h3>Bayar dengan QRIS</h3>
+
+      <p>
+        Scan QRIS di bawah dan bayar sesuai nominal
+        <strong id="almaQrisAmount">Rp0</strong>.
+      </p>
+
+      <img
+        src="assets/images/qris-alma.png"
+        alt="QRIS Pembayaran Alma"
+      >
+
+    </div>
+
+    <div class="alma-payment-warning">
+      Pastikan nominal pembayaran sesuai dengan total biaya layanan
+      yang tertera. Pendaftaran akan masuk dengan status
+      <strong>menunggu verifikasi Admin Alma</strong>.
+    </div>
+
+    <button
+      id="almaConfirmUsedCarPayment"
+      class="alma-payment-confirm"
+      type="button"
+    >
+      Saya Sudah Bayar & Kirim Pendaftaran
+    </button>
+
+  </div>
+</div>
+
+<!-- ALMA USED CAR PAYMENT MODAL END -->
 
 </body>
 </html>

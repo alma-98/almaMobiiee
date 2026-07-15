@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <meta
+    name="robots"
+    content="noindex,nofollow"
+  >
+
+  <title>
+    Admin Alma | almaMobiiee
+  </title>
+
+
+  <style>
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:#f4f5f7;
+      color:#15171c;
+    }
+
+    .admin-shell{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:20px;
+    }
+
+    .admin-card{
+      width:min(100%,480px);
+      padding:35px;
+      border:1px solid #e4e6ea;
+      border-radius:26px;
+      background:#fff;
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.10);
+    }
+
+    .admin-brand{
+      color:#e30613;
+      font-size:13px;
+      font-weight:900;
+    }
+
+    h1{
+      margin:12px 0 8px;
+      font-size:35px;
+      letter-spacing:-1.5px;
+    }
+
+    p{
+      color:#707782;
+      line-height:1.6;
+    }
+
+    .security-box{
+      margin:25px 0;
+      padding:18px;
+      border-radius:15px;
+      background:#fff5f6;
+      color:#9b1018;
+      font-size:13px;
+    }
+
+    label{
+      display:block;
+      margin:15px 0;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    input{
+      width:100%;
+      margin-top:7px;
+      padding:14px;
+      border:1px solid #e4e6ea;
+      border-radius:11px;
+      font:inherit;
+    }
+
+    button{
+      width:100%;
+      min-height:50px;
+      border:0;
+      border-radius:12px;
+      background:#e30613;
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .back{
+      display:block;
+      margin-top:18px;
+      color:#6e7580;
+      text-align:center;
+      text-decoration:none;
+      font-size:12px;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main class="admin-shell">
+
+    <section class="admin-card">
+
+      <div class="admin-brand">
+        almaMobiiee • Administrator
+      </div>
+
+      <h1>
+        Admin Alma
+      </h1>
+
+      <p>
+        Halaman administrator disiapkan untuk
+        akun pemilik almaMobiiee.
+      </p>
+
+
+      <div class="security-box">
+
+        <strong>
+          Mode Keamanan
+        </strong>
+
+        <br>
+
+        Password administrator tidak disimpan
+        di source code publik GitHub Pages.
+
+        Login penuh perlu dihubungkan ke layanan
+        autentikasi backend.
+
+      </div>
+
+
+      <form
+        onsubmit="
+          event.preventDefault();
+          alert(
+            'Login aman belum diaktifkan. ' +
+            'Hubungkan halaman ini ke backend authentication.'
+          );
+        "
+      >
+
+        <label>
+
+          Email Administrator
+
+          <input
+            type="email"
+            value="alma.budsteddy88@gmail.com"
+            readonly
+          >
+
+        </label>
+
+
+        <label>
+
+          Password
+
+          <input
+            type="password"
+            placeholder="Password administrator"
+            autocomplete="current-password"
+          >
+
+        </label>
+
+
+        <button type="submit">
+          Login Admin
+        </button>
+
+      </form>
+
+
+      <a
+        href="../"
+        class="back"
+      >
+        ← Kembali ke almaMobiiee
+      </a>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>

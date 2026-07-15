@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Alma | almaMobiiee</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#111827}
+button,input,select{font:inherit}
+.hidden{display:none!important}
+
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login-card{width:min(420px,100%);background:#fff;padding:32px;border-radius:24px;box-shadow:0 25px 70px #0002}
+.brand{color:#e30613;font-weight:900}
+.login h1{margin:12px 0 5px}
+.login p{color:#64748b}
+label{display:block;margin:15px 0;font-weight:700;font-size:13px}
+input,select{width:100%;padding:12px;margin-top:6px;border:1px solid #ddd;border-radius:10px}
+.primary{width:100%;padding:14px;border:0;border-radius:10px;background:#e30613;color:#fff;font-weight:900}
+.error{color:#b91c1c}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 25px;background:#fff;border-bottom:1px solid #ddd}
+header small{display:block;color:#64748b;margin-top:4px}
+.logout{padding:9px 14px;background:#fff;border:1px solid #ddd;border-radius:9px}
+
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 70px)}
+nav{background:#fff;border-right:1px solid #ddd;padding:20px 12px}
+.nav{display:block;width:100%;padding:12px;margin-bottom:6px;border:0;border-radius:9px;background:transparent;text-align:left;font-weight:800}
+.nav.active,.nav:hover{background:#fff1f2;color:#e30613}
+
+main{padding:30px;min-width:0}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:25px}
+.stat{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.stat small{color:#64748b}
+.stat strong{display:block;font-size:28px;margin-top:7px}
+
+.heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}
+.heading h1{margin:0}
+.add{padding:12px 17px;border:0;border-radius:10px;background:#e30613;color:#fff;font-weight:900}
+.search{max-width:400px;margin:0 0 16px}
+
+.table-wrap{overflow:auto;background:#fff;border:1px solid #ddd;border-radius:16px}
+table{width:100%;border-collapse:collapse;min-width:800px}
+th,td{padding:13px;border-bottom:1px solid #eee;text-align:left;font-size:13px}
+th{background:#fafafa;color:#64748b;font-size:11px;text-transform:uppercase}
+.actions{display:flex;gap:5px;flex-wrap:wrap}
+.action{padding:7px 9px;border:1px solid #ddd;border-radius:7px;background:#fff;font-size:11px;font-weight:800}
+.delete,.reject{color:#b91c1c}
+.verify{color:#15803d}
+.empty{text-align:center;color:#64748b;padding:30px}
+
+.modal{display:none;position:fixed;inset:0;z-index:100;background:#0009;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-card{width:min(600px,100%);max-height:90vh;overflow:auto;background:#fff;padding:25px;border-radius:20px}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close{border:0;border-radius:50%;width:36px;height:36px;font-size:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.cancel,.save{padding:11px 16px;border-radius:9px;font-weight:800}
+.cancel{background:#fff;border:1px solid #ddd}
+.save{background:#e30613;color:#fff;border:0}
+
+@media(max-width:850px){
+.layout{display:block}
+nav{display:flex;overflow:auto;border-right:0;border-bottom:1px solid #ddd}
+.nav{width:auto;white-space:nowrap}
+main{padding:18px 12px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.fields{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<section id="login" class="login">
+<div class="login-card">
+<div class="brand">almaMobiiee × Auto2000</div>
+<h1>Admin Alma</h1>
+<p>Login khusus administrator almaMobiiee.</p>
+
+<form id="loginForm">
+<label>Email
+<input id="email" type="email" value="alma.budsteddy88@gmail.com" required>
+</label>
+
+<label>Password
+<input id="password" type="password" required>
+</label>
+
+<p id="loginError" class="error"></p>
+<button class="primary">Login</button>
+</form>
+</div>
+</section>
+
+<section id="dashboard" class="hidden">
+<header>
+<div>
+<strong>almaMobiiee Admin</strong>
+<small id="adminEmail">Administrator</small>
+</div>
+<button id="logout" class="logout">Logout</button>
+</header>
+
+<div class="layout">
+
+<nav>
+<button class="nav active" data-col="mediators">Mediator</button>
+<button class="nav" data-col="used_cars">Mobil Second</button>
+<button class="nav" data-col="insurance_requests">Asuransi</button>
+<button class="nav" data-col="orders">Orders</button>
+<button class="nav" data-col="payments">Payments</button>
+</nav>
+
+<main>
+
+<div class="stats">
+<div class="stat"><small>Mediator</small><strong id="c1">0</strong></div>
+<div class="stat"><small>Mobil Second</small><strong id="c2">0</strong></div>
+<div class="stat"><small>Asuransi</small><strong id="c3">0</strong></div>
+<div class="stat"><small>Orders</small><strong id="c4">0</strong></div>
+<div class="stat"><small>Payments</small><strong id="c5">0</strong></div>
+</div>
+
+<div class="heading">
+<h1 id="title">Mediator</h1>
+<button id="add" class="add">+ Tambah Data</button>
+</div>
+
+<input id="search" class="search" type="search" placeholder="Cari data...">
+
+<div class="table-wrap">
+<table>
+<thead id="thead"></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+
+</main>
+</div>
+</section>
+
+<div id="modal" class="modal">
+<div class="modal-card">
+
+<div class="modal-head">
+<h2 id="modalTitle">Tambah Data</h2>
+<button id="close" type="button" class="close">×</button>
+</div>
+
+<form id="crudForm">
+<div id="fields" class="fields"></div>
+
+<div class="modal-actions">
+<button id="cancel" type="button" class="cancel">Batal</button>
+<button type="submit" class="save">Simpan</button>
+</div>
+</form>
+
+</div>
+</div>
+
+<script type="module" src="./admin.js?v=3"></script>
+</body>
+</html>

@@ -32,68 +32,6 @@
     "url": "https://alma-98.github.io/almaMobiiee/"
   }
   </script>
-<style>
-/* MEDIATOR SECOND - PARTNERSHIP STYLE */
-.mediator-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.mediator-card .partnership-card-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.mediator-card .partnership-badge {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  margin-bottom: 16px;
-}
-
-.mediator-card h3 {
-  margin-top: 0;
-}
-
-.mediator-card .partnership-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
-  display: grid;
-  gap: 14px;
-}
-
-.mediator-card .partnership-benefits li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.mediator-card .check-icon {
-  flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-.mediator-card .mediator-button {
-  margin-top: auto;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .mediator-card .partnership-benefits {
-    gap: 12px;
-  }
-}
-</style>
 </head>
 
 <body>
@@ -929,15 +867,57 @@
 
       <div class="used-car-info">
 
-        
+        <div class="fee-card">
 
+          <span class="fee-label">
+            Biaya Layanan
+          </span>
+
+          <strong>
+            2,5%
+          </strong>
+
+          <p>
+            Perhitungan biaya layanan berdasarkan
+            harga kendaraan yang dimasukkan.
+          </p>
+
+        </div>
 
 
         <div class="payment-mini-card">
 
           
+<div class="alma-qris-payment">
+  <div class="alma-qris-label">Pembayaran</div>
+  <h3>QRIS</h3>
 
+  <img
+    src="assets/images/qris-alma.png"
+    alt=""
+    class="alma-qris-image"
+    loading="lazy"
+  >
 
+  <p>
+    Scan QRIS untuk membayar biaya layanan
+    sebesar <strong>2,5% dari harga kendaraan</strong>.
+  </p>
+
+  <p class="alma-qris-note">
+    Setelah pembayaran, data akan masuk dengan status
+    menunggu verifikasi Admin Alma.
+  </p>
+
+  <a
+    href="assets/images/qris-alma.png"
+    target="_blank"
+    rel="noopener"
+    class="alma-qris-button"
+  >
+    Buka QRIS
+  </a>
+</div>
 
 
         </div>
@@ -945,183 +925,97 @@
       </div>
 
 
-      
-
-<form
-  class="premium-form alma-used-car-clean"
-  id="usedCarForm"
->
-
-  <div class="alma-used-car-clean-head">
-
-    <span class="alma-used-car-clean-icon">
-      🚘
-    </span>
-
-    <div>
-      <span class="alma-used-car-clean-eyebrow">
-        Mobil Second
-      </span>
-
-      <h3>
-        Jual Mobil Anda
-      </h3>
-
-      <p>
-        Isi data kendaraan untuk proses review oleh Admin Alma.
-      </p>
-    </div>
-
-  </div>
-
-
-  <div class="alma-used-car-clean-grid">
-
-    <label>
-      <span>Nama Pemilik</span>
-
-      <input
-        type="text"
-        id="sellerName"
-        name="ownerName"
-        placeholder="Nama lengkap"
-        autocomplete="name"
-        required
+      <form
+        class="premium-form"
+        id="usedCarForm"
       >
-    </label>
+
+        <h3>
+          Data Kendaraan
+        </h3>
+
+        <div class="two-column-form">
+
+          <label>
+            Nama Pemilik
+            <input
+              type="text"
+              id="sellerName"
+              required
+            >
+          </label>
+
+          <label>
+            Nomor HP
+            <input
+              type="tel"
+              id="sellerPhone"
+              required
+            >
+          </label>
+
+        </div>
 
 
-    <label>
-      <span>Nomor HP</span>
-
-      <input
-        type="tel"
-        id="sellerPhone"
-        name="phone"
-        placeholder="08xxxxxxxxxx"
-        autocomplete="tel"
-        required
-      >
-    </label>
+        <label>
+          Merek & Tipe Mobil
+          <input
+            type="text"
+            id="sellerCar"
+            placeholder="Contoh: Toyota Avanza G"
+            required
+          >
+        </label>
 
 
-    <label>
-      <span>Merek & Tipe Mobil</span>
+        <div class="two-column-form">
 
-      <input
-        type="text"
-        id="sellerCar"
-        name="car"
-        placeholder="Contoh: Toyota Avanza G"
-        required
-      >
-    </label>
+          <label>
+            Tahun
+            <input
+              type="number"
+              id="sellerYear"
+              required
+            >
+          </label>
 
+          <label>
+            Harga Mobil
+            <input
+              type="number"
+              id="sellerPrice"
+              min="1"
+              required
+            >
+          </label>
 
-    <label>
-      <span>Tahun</span>
-
-      <input
-        type="number"
-        id="sellerYear"
-        name="year"
-        placeholder="2022"
-        min="1980"
-        max="2030"
-        required
-      >
-    </label>
+        </div>
 
 
-    <label class="alma-used-car-wide">
-      <span>Harga Penawaran</span>
-
-      <div class="alma-price-input">
-        <strong>Rp</strong>
-
-        <input
-          type="number"
-          id="sellerPrice"
-          name="price"
-          placeholder="250000000"
-          min="1"
-          inputmode="numeric"
-          required
-        >
-      </div>
-
-      <small>
-        Masukkan nominal tanpa titik atau koma.
-      </small>
-    </label>
-
-
-    <label class="alma-used-car-wide">
-      <span>Foto Kendaraan</span>
-
-      <div class="alma-used-car-upload">
-        <input
-          type="file"
-          id="sellerImage"
-          name="image"
-          accept="image/jpeg,image/png,image/webp"
+        <div
+          class="fee-calculator"
+          id="sellerFeeBox"
         >
 
-        <small>
-          Format JPG, PNG, atau WebP.
-        </small>
-      </div>
-    </label>
+          <span>
+            Estimasi biaya layanan 2,5%
+          </span>
+
+          <strong id="sellerFee">
+            Rp0
+          </strong>
+
+        </div>
 
 
-    <div
-      id="sellerImagePreview"
-      class="alma-used-car-clean-preview"
-      hidden
-    >
-      <img
-        id="sellerImagePreviewImg"
-        alt="Preview foto kendaraan"
-      >
-    </div>
+        <button
+          type="submit"
+          class="form-submit-button"
+        >
+          Daftarkan Mobil untuk Review
+        </button>
 
-
-    <label class="alma-used-car-wide">
-      <span>Kondisi / Catatan Kendaraan</span>
-
-      <textarea
-        id="sellerNotes"
-        name="notes"
-        rows="4"
-        placeholder="Ceritakan kondisi kendaraan, pajak, servis, dan informasi penting lainnya..."
-      ></textarea>
-    </label>
-
-  </div>
-
-
-  <div class="alma-used-car-clean-footer">
-
-    <div class="alma-used-car-review-note">
-      <span>✓</span>
-
-      <p>
-        Data kendaraan akan diperiksa terlebih dahulu sebelum diproses.
-      </p>
-    </div>
-
-    <button
-      type="submit"
-      class="alma-used-car-clean-submit"
-    >
-      Kirim untuk Review
-    </button>
-
-  </div>
-
-</form>
-
-
+      </form>
 
     </div>
 
@@ -1240,42 +1134,42 @@
 
   <div class="container mediator-layout">
 
-    <div class="partnership-card mediator-card">
-  <div class="partnership-card-content">
-    <span class="partnership-badge">MOBIL SECOND</span>
+    <div class="mediator-copy">
 
-    <h3>Jadi Mediator almaMobiiee</h3>
+      <span class="section-label">
+        Partnership
+      </span>
 
-    <p>
-      Daftarkan diri sebagai mediator untuk membantu mempertemukan
-      calon pembeli dengan peluang kendaraan.
-    </p>
+      <h2 class="large-section-title">
+        Jadi Mediator almaMobiiee
+      </h2>
 
-    <ul class="partnership-benefits">
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Pendaftaran data mediator</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Nomor registrasi otomatis</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Pembayaran biaya administrasi</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Verifikasi oleh administrator</span>
-      </li>
-    </ul>
+      <p class="large-section-copy">
+        Daftarkan diri sebagai mediator untuk
+        membantu mempertemukan calon pembeli
+        dengan peluang kendaraan.
+      </p>
 
-    <a href="#form-mediator"
-       class="btn btn-primary partnership-button mediator-button">
-      Daftar Sebagai Mediator
-    </a>
-  </div>
-</div>
+
+      <ul class="mediator-benefits">
+        <li>
+          Pendaftaran data mediator
+        </li>
+
+        <li>
+          Nomor registrasi otomatis
+        </li>
+
+        <li>
+          Pembayaran biaya administrasi
+        </li>
+
+        <li>
+          Verifikasi oleh administrator
+        </li>
+      </ul>
+
+    </div>
 
 
     <form

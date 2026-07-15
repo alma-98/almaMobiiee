@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <meta
+    name="robots"
+    content="noindex,nofollow"
+  >
+
+  <title>
+    Admin Alma | almaMobiiee
+  </title>
+
+
+  <style>
+
+    :root{
+      --red:#e30613;
+      --dark:#111318;
+      --muted:#707782;
+      --border:#e6e8ec;
+      --light:#f5f6f8;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:#f4f5f7;
+      color:var(--dark);
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .hidden{
+      display:none !important;
+    }
+
+    .login-screen{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:20px;
+    }
+
+    .login-card{
+      width:min(100%,450px);
+      padding:35px;
+      border:1px solid var(--border);
+      border-radius:26px;
+      background:#fff;
+      box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.12);
+    }
+
+    .brand{
+      color:var(--red);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    h1{
+      margin:12px 0 8px;
+      font-size:38px;
+      letter-spacing:-1.5px;
+    }
+
+    .login-card p{
+      color:var(--muted);
+    }
+
+    label{
+      display:block;
+      margin:16px 0;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    input{
+      width:100%;
+      margin-top:7px;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:11px;
+      outline:none;
+    }
+
+    input:focus{
+      border-color:var(--red);
+    }
+
+    .primary-button{
+      width:100%;
+      min-height:50px;
+      border:0;
+      border-radius:12px;
+      background:var(--red);
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .error{
+      min-height:20px;
+      color:#b91c1c;
+      font-size:12px;
+    }
+
+    .dashboard{
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:18px 30px;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(15px);
+    }
+
+    .topbar strong,
+    .topbar small{
+      display:block;
+    }
+
+    .topbar small{
+      color:var(--muted);
+    }
+
+    .logout{
+      padding:10px 16px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:#fff;
+      cursor:pointer;
+    }
+
+    .dashboard-main{
+      width:min(1300px,calc(100% - 40px));
+      margin:auto;
+      padding:40px 0 80px;
+    }
+
+    .dashboard-title{
+      margin-bottom:30px;
+    }
+
+    .dashboard-title h1{
+      margin-bottom:5px;
+    }
+
+    .dashboard-title p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:
+        repeat(3,1fr);
+      gap:16px;
+      margin-bottom:35px;
+    }
+
+    .stat{
+      padding:24px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:#fff;
+    }
+
+    .stat small,
+    .stat strong{
+      display:block;
+    }
+
+    .stat small{
+      color:var(--muted);
+    }
+
+    .stat strong{
+      margin-top:8px;
+      font-size:35px;
+    }
+
+    .admin-section{
+      margin-top:35px;
+    }
+
+    .admin-section h2{
+      font-size:24px;
+    }
+
+    .data-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .data-card{
+      padding:20px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:#fff;
+    }
+
+    .data-card-header{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .data-card strong{
+      display:block;
+    }
+
+    .data-card small{
+      color:var(--muted);
+    }
+
+    .status{
+      display:inline-flex;
+      margin-top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#fff4e5;
+      color:#9a5b00;
+      font-size:10px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .empty{
+      padding:30px;
+      border:1px dashed var(--border);
+      border-radius:16px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    @media(max-width:700px){
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .topbar{
+        padding:15px;
+      }
+
+      .dashboard-main{
+        width:calc(100% - 28px);
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <section
+    class="login-screen"
+    id="loginScreen"
+  >
+
+    <div class="login-card">
+
+      <div class="brand">
+        almaMobiiee × Auto2000
+      </div>
+
+      <h1>
+        Admin Alma
+      </h1>
+
+      <p>
+        Login khusus administrator almaMobiiee.
+      </p>
+
+
+      <form id="loginForm">
+
+        <label>
+
+          Email
+
+          <input
+            type="email"
+            id="email"
+            value="alma.budsteddy88@gmail.com"
+            autocomplete="username"
+            required
+          >
+
+        </label>
+
+
+        <label>
+
+          Password
+
+          <input
+            type="password"
+            id="password"
+            autocomplete="current-password"
+            required
+          >
+
+        </label>
+
+
+        <p
+          class="error"
+          id="loginError"
+        ></p>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+          Login
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <section
+    class="dashboard hidden"
+    id="dashboard"
+  >
+
+    <header class="topbar">
+
+      <div>
+
+        <strong>
+          almaMobiiee Admin
+        </strong>
+
+        <small id="adminEmail">
+          Administrator
+        </small>
+
+      </div>
+
+
+      <button
+        class="logout"
+        id="logoutButton"
+      >
+        Logout
+      </button>
+
+    </header>
+
+
+    <main class="dashboard-main">
+
+      <div class="dashboard-title">
+
+        <h1>
+          Dashboard
+        </h1>
+
+        <p>
+          Data pelanggan dari Firebase Firestore.
+        </p>
+
+      </div>
+
+
+      <div class="stats">
+
+        <article class="stat">
+          <small>Mediator</small>
+          <strong id="mediatorCount">0</strong>
+        </article>
+
+        <article class="stat">
+          <small>Mobil Second</small>
+          <strong id="usedCarCount">0</strong>
+        </article>
+
+        <article class="stat">
+          <small>Asuransi</small>
+          <strong id="insuranceCount">0</strong>
+        </article>
+
+      </div>
+
+
+      <section class="admin-section">
+
+        <h2>
+          Pendaftar Mediator
+        </h2>
+
+        <div
+          class="data-list"
+          id="mediatorList"
+        ></div>
+
+      </section>
+
+
+      <section class="admin-section">
+
+        <h2>
+          Mobil Second
+        </h2>
+
+        <div
+          class="data-list"
+          id="usedCarList"
+        ></div>
+
+      </section>
+
+
+      <section class="admin-section">
+
+        <h2>
+          Permintaan Asuransi
+        </h2>
+
+        <div
+          class="data-list"
+          id="insuranceList"
+        ></div>
+
+      </section>
+
+    </main>
+
+  </section>
+
+
+  <script
+    type="module"
+    src="admin.js"
+  ></script>
+
+</body>
+
+</html>

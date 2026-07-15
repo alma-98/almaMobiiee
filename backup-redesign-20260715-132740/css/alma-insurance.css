@@ -1,0 +1,172 @@
+.alma-insurance{
+  padding:80px 20px;
+  background:#f8fafc;
+}
+
+.alma-insurance-container{
+  max-width:1180px;
+  margin:auto;
+}
+
+.alma-insurance-header{
+  max-width:760px;
+  margin-bottom:35px;
+}
+
+.alma-insurance-label{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#fff1f2;
+  color:#e30613;
+  font-size:13px;
+  font-weight:800;
+}
+
+.alma-insurance-header h2{
+  margin:0 0 12px;
+  color:#111827;
+  font-size:38px;
+  line-height:1.15;
+}
+
+.alma-insurance-header p{
+  margin:0;
+  color:#64748b;
+  line-height:1.7;
+}
+
+.alma-insurance-layout{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:25px;
+  align-items:start;
+}
+
+.alma-insurance-info,
+.alma-insurance-form-card{
+  background:#ffffff;
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 15px 45px rgba(15,23,42,.07);
+}
+
+.alma-insurance-info h3,
+.alma-insurance-form-card h3{
+  margin-top:0;
+  color:#111827;
+}
+
+.alma-insurance-benefit{
+  display:flex;
+  gap:14px;
+  margin:20px 0;
+}
+
+.alma-insurance-icon{
+  flex:0 0 46px;
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  background:#fff1f2;
+  font-size:21px;
+}
+
+.alma-insurance-benefit strong{
+  display:block;
+  margin-bottom:5px;
+  color:#111827;
+}
+
+.alma-insurance-benefit p{
+  margin:0;
+  color:#64748b;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.alma-insurance-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.alma-insurance-field{
+  margin-bottom:14px;
+}
+
+.alma-insurance-field.full{
+  grid-column:1/-1;
+}
+
+.alma-insurance-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#334155;
+  font-size:14px;
+  font-weight:700;
+}
+
+.alma-insurance-field input,
+.alma-insurance-field select,
+.alma-insurance-field textarea{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #dbe1e8;
+  border-radius:11px;
+  background:#ffffff;
+  color:#111827;
+  font:inherit;
+}
+
+.alma-insurance-field textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.alma-insurance-submit{
+  width:100%;
+  padding:15px 18px;
+  border:0;
+  border-radius:12px;
+  background:#e30613;
+  color:#ffffff;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.alma-insurance-note{
+  margin-top:15px;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+@media(max-width:850px){
+  .alma-insurance-layout{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .alma-insurance{
+    padding:60px 16px;
+  }
+
+  .alma-insurance-header h2{
+    font-size:30px;
+  }
+
+  .alma-insurance-grid{
+    grid-template-columns:1fr;
+  }
+
+  .alma-insurance-field.full{
+    grid-column:auto;
+  }
+}

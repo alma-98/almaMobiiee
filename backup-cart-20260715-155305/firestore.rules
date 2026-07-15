@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email
+        == "alma.budsteddy88@gmail.com";
+    }
+
+    match /new_cars/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /accessories/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /orders/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /payments/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /mediators/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /used_cars/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /insurance_requests/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+  }
+
+}

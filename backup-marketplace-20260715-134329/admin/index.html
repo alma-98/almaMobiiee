@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Admin Pemilik | almaMobiiee</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+  color:#111827;
+}
+
+.alma-admin-login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.alma-admin-card{
+  width:min(100%,430px);
+  padding:32px;
+  background:#ffffff;
+  border-radius:24px;
+  box-shadow:0 25px 70px rgba(15,23,42,.12);
+}
+
+.alma-admin-logo{
+  width:64px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  border-radius:18px;
+  background:#e30613;
+  color:#ffffff;
+  font-size:28px;
+  font-weight:900;
+}
+
+h1{
+  margin:0 0 8px;
+}
+
+p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+label{
+  display:block;
+  margin-top:16px;
+  margin-bottom:7px;
+  font-weight:700;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d1d5db;
+  border-radius:11px;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:11px;
+  background:#e30613;
+  color:#ffffff;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.alma-error{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  background:#fff1f2;
+  color:#be123c;
+}
+
+.alma-dashboard{
+  display:none;
+  min-height:100vh;
+}
+
+.alma-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 30px;
+  background:#111827;
+  color:#ffffff;
+}
+
+.alma-header h2{
+  margin:0;
+}
+
+.alma-header button{
+  width:auto;
+  margin:0;
+  background:#dc2626;
+}
+
+.alma-content{
+  max-width:1200px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.alma-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.alma-box{
+  padding:24px;
+  border-radius:18px;
+  background:#ffffff;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
+
+.alma-box h3{
+  margin-top:0;
+}
+
+.alma-menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.alma-menu a{
+  display:block;
+  padding:20px;
+  border-radius:16px;
+  background:#ffffff;
+  color:#111827;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
+</style>
+</head>
+
+<body>
+
+<section
+  id="loginScreen"
+  class="alma-admin-login"
+>
+  <div class="alma-admin-card">
+
+    <div class="alma-admin-logo">
+      A
+    </div>
+
+    <h1>
+      Admin Pemilik
+    </h1>
+
+    <p>
+      Login khusus pemilik almaMobiiee.
+    </p>
+
+    <form id="adminLoginForm">
+
+      <label for="adminEmail">
+        Email
+      </label>
+
+      <input
+        id="adminEmail"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="adminPassword">
+        Password
+      </label>
+
+      <input
+        id="adminPassword"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="submit">
+        Masuk Admin
+      </button>
+
+      <div
+        id="loginError"
+        class="alma-error"
+      >
+        Email atau password tidak sesuai.
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+<section
+  id="adminDashboard"
+  class="alma-dashboard"
+>
+
+  <header class="alma-header">
+
+    <div>
+      <strong>
+        almaMobiiee
+      </strong>
+      <h2>
+        Admin Pemilik
+      </h2>
+    </div>
+
+    <button onclick="logoutAdmin()">
+      Keluar
+    </button>
+
+  </header>
+
+  <main class="alma-content">
+
+    <div class="alma-grid">
+
+      <div class="alma-box">
+        <h3>Mobil Baru</h3>
+        <p>
+          Kelola kendaraan baru.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Mobil Second</h3>
+        <p>
+          Kelola unit kendaraan second.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Accessories</h3>
+        <p>
+          Kelola produk accessories mobil.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Promo</h3>
+        <p>
+          Update promo yang tampil di website.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Pesanan</h3>
+        <p>
+          Lihat pesanan pelanggan.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="alma-menu">
+
+      <a href="../">
+        ← Kembali ke Website
+      </a>
+
+      <a href="../#mobil">
+        Kelola Mobil
+      </a>
+
+      <a href="../#mobil-second">
+        Kelola Mobil Second
+      </a>
+
+      <a href="../#accessories">
+        Kelola Accessories
+      </a>
+
+      <a href="../#promo">
+        Kelola Promo
+      </a>
+
+    </div>
+
+  </main>
+
+<div
+  id="insuranceOrdersPanel"
+  style="
+    display:none;
+    max-width:1200px;
+    margin:0 auto 30px;
+    padding:0 20px;
+  "
+>
+  <div
+    style="
+      background:#fff;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 8px 30px rgba(15,23,42,.06);
+    "
+  >
+    <h2>
+      Pengajuan Asuransi
+    </h2>
+
+    <div
+      style="overflow:auto"
+    >
+      <table
+        style="
+          width:100%;
+          border-collapse:collapse;
+        "
+      >
+        <thead>
+          <tr>
+            <th style="padding:10px;text-align:left">
+              ID
+            </th>
+            <th style="padding:10px;text-align:left">
+              Pelanggan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Kendaraan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Perlindungan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Status
+            </th>
+            <th style="padding:10px;text-align:left">
+              Aksi
+            </th>
+          </tr>
+        </thead>
+
+        <tbody id="insuranceOrdersTable">
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+<script>
+const ADMIN_EMAIL =
+  "alma.budsteddy88@gmail.com";
+
+const ADMIN_PASSWORD =
+  "123456";
+
+const loginScreen =
+  document.getElementById("loginScreen");
+
+const dashboard =
+  document.getElementById("adminDashboard");
+
+const form =
+  document.getElementById("adminLoginForm");
+
+const error =
+  document.getElementById("loginError");
+
+function showDashboard(){
+  loginScreen.style.display = "none";
+  dashboard.style.display = "block";
+}
+
+function logoutAdmin(){
+  sessionStorage.removeItem(
+    "almamobiiee_admin"
+  );
+
+  location.reload();
+}
+
+form.addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+    const email =
+      document
+        .getElementById("adminEmail")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const password =
+      document
+        .getElementById("adminPassword")
+        .value;
+
+    if(
+      email === ADMIN_EMAIL &&
+      password === ADMIN_PASSWORD
+    ){
+      sessionStorage.setItem(
+        "almamobiiee_admin",
+        "authenticated"
+      );
+
+      error.style.display = "none";
+
+      showDashboard();
+
+      return;
+    }
+
+    error.style.display = "block";
+  }
+);
+
+if(
+  sessionStorage.getItem(
+    "almamobiiee_admin"
+  ) === "authenticated"
+){
+  showDashboard();
+}
+</script>
+
+
+<script>
+function getAlmaInsuranceOrders(){
+  try{
+    return JSON.parse(
+      localStorage.getItem(
+        "alma_insurance_orders"
+      )
+    ) || [];
+  }catch(error){
+    return [];
+  }
+}
+
+function saveAlmaInsuranceOrders(
+  orders
+){
+  localStorage.setItem(
+    "alma_insurance_orders",
+    JSON.stringify(orders)
+  );
+}
+
+function showInsuranceOrders(){
+  const panel =
+    document.getElementById(
+      "insuranceOrdersPanel"
+    );
+
+  if(!panel){
+    return;
+  }
+
+  panel.style.display =
+    "block";
+
+  renderInsuranceOrders();
+
+  panel.scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function renderInsuranceOrders(){
+  const table =
+    document.getElementById(
+      "insuranceOrdersTable"
+    );
+
+  if(!table){
+    return;
+  }
+
+  const orders =
+    getAlmaInsuranceOrders();
+
+  if(!orders.length){
+    table.innerHTML =
+      '<tr>' +
+      '<td colspan="6" ' +
+      'style="padding:20px">' +
+      'Belum ada pengajuan asuransi.' +
+      '</td>' +
+      '</tr>';
+
+    return;
+  }
+
+  table.innerHTML =
+    orders.map(
+      function(order){
+
+        return (
+          '<tr>' +
+
+          '<td style="padding:10px">' +
+          order.id +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+          order.customer +
+          '<br><small>' +
+          order.phone +
+          '</small></td>' +
+
+          '<td style="padding:10px">' +
+          order.vehicle +
+          '<br><small>' +
+          order.year +
+          '</small></td>' +
+
+          '<td style="padding:10px">' +
+          order.coverage +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+          order.status +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Diproses')" +
+          '">' +
+          'Proses' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Penawaran Dikirim')" +
+          '">' +
+          'Penawaran' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Selesai')" +
+          '">' +
+          'Selesai' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "deleteInsuranceOrder('" +
+          order.id +
+          "')" +
+          '">' +
+          'Hapus' +
+          '</button>' +
+
+          '</td>' +
+
+          '</tr>'
+        );
+      }
+    ).join("");
+}
+
+function updateInsuranceStatus(
+  id,
+  status
+){
+  const orders =
+    getAlmaInsuranceOrders();
+
+  const order =
+    orders.find(
+      function(item){
+        return item.id === id;
+      }
+    );
+
+  if(order){
+    order.status = status;
+
+    saveAlmaInsuranceOrders(
+      orders
+    );
+
+    renderInsuranceOrders();
+  }
+}
+
+function deleteInsuranceOrder(id){
+  if(
+    !confirm(
+      "Hapus pengajuan asuransi ini?"
+    )
+  ){
+    return;
+  }
+
+  const orders =
+    getAlmaInsuranceOrders()
+      .filter(
+        function(item){
+          return item.id !== id;
+        }
+      );
+
+  saveAlmaInsuranceOrders(
+    orders
+  );
+
+  renderInsuranceOrders();
+}
+</script>
+
+</body>
+</html>

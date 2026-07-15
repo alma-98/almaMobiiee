@@ -1,0 +1,397 @@
+.alma-extra-nav-link{
+  white-space:nowrap;
+}
+
+.alma-sms-button{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:99990;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 19px;
+  border:0;
+  border-radius:999px;
+  background:#e30613;
+  color:#ffffff;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 12px 32px rgba(227,6,19,.28);
+}
+
+.alma-sms-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.72);
+}
+
+.alma-sms-modal.active{
+  display:flex;
+}
+
+.alma-sms-card{
+  position:relative;
+  width:min(100%,440px);
+  padding:30px;
+  border-radius:24px;
+  background:#ffffff;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.3);
+}
+
+.alma-sms-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.alma-sms-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:68px;
+  height:68px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:#e30613;
+  color:#ffffff;
+  font-size:30px;
+}
+
+.alma-sms-card h2{
+  margin:0 0 10px;
+  color:#111827;
+}
+
+.alma-sms-card p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+.alma-sms-number{
+  margin:18px 0;
+  padding:14px;
+  border-radius:14px;
+  background:#f8fafc;
+  font-size:20px;
+  font-weight:800;
+}
+
+.alma-sms-action{
+  display:block;
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#e30613;
+  color:#ffffff !important;
+  text-decoration:none;
+  font-weight:800;
+}
+
+.alma-sms-cancel{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#f1f5f9;
+  font-weight:700;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+  .alma-sms-button{
+    right:14px;
+    bottom:14px;
+  }
+}
+
+/* =========================================
+   QRIS MOBIL SECOND
+========================================= */
+
+.alma-qris-payment{
+  margin-top:20px;
+  padding:24px;
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+  background:#ffffff;
+  text-align:center;
+  box-shadow:0 18px 45px rgba(15,23,42,.08);
+}
+
+.alma-qris-label{
+  margin-bottom:6px;
+  color:#64748b;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.alma-qris-payment h3{
+  margin:0 0 18px;
+  color:#111827;
+  font-size:28px;
+}
+
+.alma-qris-image{
+  display:block;
+  width:min(100%,320px);
+  height:auto;
+  margin:0 auto 18px;
+  padding:10px;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  background:#ffffff;
+}
+
+.alma-qris-payment p{
+  max-width:520px;
+  margin:10px auto;
+  color:#475569;
+  line-height:1.7;
+}
+
+.alma-qris-note{
+  font-size:13px;
+  color:#64748b !important;
+}
+
+.alma-qris-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:14px;
+  padding:13px 22px;
+  border-radius:999px;
+  background:#e30613;
+  color:#ffffff !important;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.alma-qris-button:hover{
+  opacity:.9;
+}
+
+@media(max-width:600px){
+  .alma-qris-payment{
+    padding:18px;
+  }
+
+  .alma-qris-image{
+    width:min(100%,280px);
+  }
+}
+
+/* =====================================================
+   USED CAR PAYMENT SIMULATION
+===================================================== */
+
+.alma-fee-result{
+  margin-top:14px;
+  padding:18px;
+  border:1px solid #fecaca;
+  border-radius:16px;
+  background:#fff7f7;
+}
+
+.alma-fee-result small{
+  display:block;
+  margin-bottom:6px;
+  color:#64748b;
+  font-weight:700;
+}
+
+.alma-fee-result strong{
+  display:block;
+  color:#e30613;
+  font-size:28px;
+  font-weight:900;
+}
+
+.alma-fee-result span{
+  display:block;
+  margin-top:6px;
+  color:#64748b;
+  font-size:12px;
+}
+
+.alma-payment-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.78);
+  backdrop-filter:blur(6px);
+}
+
+.alma-payment-modal.active{
+  display:flex;
+}
+
+.alma-payment-card{
+  position:relative;
+  width:min(100%,560px);
+  max-height:92vh;
+  overflow:auto;
+  padding:28px;
+  border-radius:24px;
+  background:#ffffff;
+  box-shadow:0 30px 100px rgba(0,0,0,.35);
+}
+
+.alma-payment-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.alma-payment-card h2{
+  margin:0 45px 7px 0;
+  color:#111827;
+}
+
+.alma-payment-subtitle{
+  margin:0 0 20px;
+  color:#64748b;
+  line-height:1.6;
+}
+
+.alma-payment-summary{
+  overflow:hidden;
+  margin-bottom:20px;
+  border:1px solid #e5e7eb;
+  border-radius:17px;
+}
+
+.alma-payment-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:13px 15px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.alma-payment-row:last-child{
+  border-bottom:0;
+}
+
+.alma-payment-row span{
+  color:#64748b;
+}
+
+.alma-payment-row strong{
+  text-align:right;
+  color:#111827;
+}
+
+.alma-payment-total{
+  background:#fff1f2;
+}
+
+.alma-payment-total span,
+.alma-payment-total strong{
+  color:#e30613;
+  font-weight:900;
+}
+
+.alma-payment-total strong{
+  font-size:20px;
+}
+
+.alma-payment-qris{
+  padding:20px;
+  border-radius:18px;
+  background:#f8fafc;
+  text-align:center;
+}
+
+.alma-payment-qris h3{
+  margin:0 0 7px;
+}
+
+.alma-payment-qris p{
+  margin:0 0 15px;
+  color:#64748b;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.alma-payment-qris img{
+  display:block;
+  width:min(100%,300px);
+  height:auto;
+  margin:0 auto;
+  padding:8px;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  background:#ffffff;
+}
+
+.alma-payment-warning{
+  margin:17px 0;
+  padding:13px;
+  border-radius:12px;
+  background:#fffbeb;
+  color:#92400e;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.alma-payment-confirm{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:#e30613;
+  color:#ffffff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.alma-payment-confirm:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+@media(max-width:600px){
+  .alma-payment-card{
+    padding:22px 16px;
+  }
+
+  .alma-payment-row{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .alma-payment-row strong{
+    text-align:left;
+  }
+}
+
