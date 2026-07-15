@@ -1,416 +1,288 @@
-import {
-  initializeApp
-} from
-  "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import{initializeApp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import{getFirestore,collection,getDocs,addDoc,updateDoc,deleteDoc,doc,serverTimestamp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from
-  "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+const firebaseConfig={
+apiKey:"AIzaSyBZmB6YP01F7VUytAowrhJP4sUei85Qlig",
+authDomain:"almamobiiee.firebaseapp.com",
+projectId:"almamobiiee",
+storageBucket:"almamobiiee.firebasestorage.app",
+messagingSenderId:"196216662786",
+appId:"1:196216662786:web:a0d1286318004a525fb01b"
+};
 
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  orderBy
-} from
-  "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+const ADMIN="alma.budsteddy88@gmail.com";
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-import {
-  firebaseConfig,
-  ADMIN_EMAIL
-} from
-  "../js/firebase-config.js";
+const schemas={
+mediators:{
+title:"Mediator",
+fields:[
+["name","Nama","text"],
+["phone","Telepon","text"],
+["email","Email","email"],
+["city","Kota","text"],
+["reason","Catatan","text"],
+["status","Status","select",["pending","approved","rejected"]],
+["paymentStatus","Pembayaran","select",["pending","paid","rejected"]]
+]},
+used_cars:{
+title:"Mobil Second",
+fields:[
+["ownerName","Pemilik","text"],
+["phone","Telepon","text"],
+["car","Mobil","text"],
+["year","Tahun","number"],
+["price","Harga","number"],
+["adminFee","Admin 2,5%","number"],
+["status","Status","select",["pending_review","approved","sold","rejected"]],
+["paymentStatus","Pembayaran","select",["pending","paid","rejected"]]
+]},
+insurance_requests:{
+title:"Asuransi",
+fields:[
+["name","Nama","text"],
+["phone","Telepon","text"],
+["car","Mobil","text"],
+["year","Tahun","number"],
+["status","Status","select",["new","contacted","completed","rejected"]]
+]},
+orders:{
+title:"Orders",
+fields:[
+["customerName","Customer","text"],
+["phone","Telepon","text"],
+["product","Produk","text"],
+["quantity","Jumlah","number"],
+["total","Total","number"],
+["status","Status","select",["pending","processing","completed","cancelled"]]
+]},
+payments:{
+title:"Payments",
+fields:[
+["referenceId","Referensi","text"],
+["customerName","Customer","text"],
+["amount","Jumlah","number"],
+["method","Metode","select",["QRIS","Bank Mandiri"]],
+["status","Status","select",["pending","verified","rejected"]]
+]}
+};
 
+let current="mediators";
+let data=[];
+let editing=null;
 
-const app =
-  initializeApp(firebaseConfig);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
-const auth =
-  getAuth(app);
+$("loginForm").onsubmit=async e=>{
+e.preventDefault();
+$("loginError").textContent="";
+try{
+await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
+}catch(err){
+console.error(err);
+$("loginError").textContent="Email atau password tidak valid.";
+}
+};
 
-const db =
-  getFirestore(app);
+$("logout").onclick=()=>signOut(auth);
 
+onAuthStateChanged(auth,async user=>{
+if(!user||user.email?.toLowerCase()!==ADMIN){
+$("dashboard").classList.add("hidden");
+$("login").classList.remove("hidden");
+return;
+}
+$("login").classList.add("hidden");
+$("dashboard").classList.remove("hidden");
+$("adminEmail").textContent=user.email;
+await refresh();
+});
 
-const loginScreen =
-  document.getElementById(
-    "loginScreen"
-  );
-
-const dashboard =
-  document.getElementById(
-    "dashboard"
-  );
-
-const loginForm =
-  document.getElementById(
-    "loginForm"
-  );
-
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
-
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
+async function read(col){
+const snap=await getDocs(collection(db,col));
+return snap.docs.map(x=>({id:x.id,...x.data()}));
 }
 
-
-function showLogin(){
-
-  loginScreen
-    .classList
-    .remove("hidden");
-
-  dashboard
-    .classList
-    .add("hidden");
-
+async function load(){
+data=await read(current);
+render(data);
 }
 
+function render(rows){
+const s=schemas[current];
+$("title").textContent=s.title;
 
-function showDashboard(){
+$("thead").innerHTML="<tr>"+
+s.fields.map(f=>`<th>${esc(f[1])}</th>`).join("")+
+"<th>Aksi</th></tr>";
 
-  loginScreen
-    .classList
-    .add("hidden");
-
-  dashboard
-    .classList
-    .remove("hidden");
-
+if(!rows.length){
+$("tbody").innerHTML=`<tr><td class="empty" colspan="${s.fields.length+1}">Belum ada data. Klik "+ Tambah Data".</td></tr>`;
+return;
 }
 
-
-loginForm.addEventListener(
-  "submit",
-  async function(event){
-
-    event.preventDefault();
-
-    loginError.textContent = "";
-
-
-    const email =
-      document
-        .getElementById(
-          "email"
-        )
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-      document
-        .getElementById(
-          "password"
-        )
-        .value;
-
-
-    if(
-      email !==
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      loginError.textContent =
-        "Akun ini bukan administrator.";
-
-      return;
-
-    }
-
-
-    try{
-
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-    }catch(error){
-
-      console.error(error);
-
-      loginError.textContent =
-        "Email atau password tidak valid.";
-
-    }
-
-  }
-);
-
-
-document
-  .getElementById(
-    "logoutButton"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      signOut(auth);
-
-    }
-  );
-
-
-onAuthStateChanged(
-  auth,
-  async function(user){
-
-    if(!user){
-
-      showLogin();
-
-      return;
-
-    }
-
-
-    if(
-      user.email
-        ?.toLowerCase()
-      !==
-      ADMIN_EMAIL
-        .toLowerCase()
-    ){
-
-      await signOut(auth);
-
-      showLogin();
-
-      return;
-
-    }
-
-
-    document
-      .getElementById(
-        "adminEmail"
-      )
-      .textContent =
-      user.email;
-
-
-    showDashboard();
-
-    await loadDashboard();
-
-  }
-);
-
-
-async function getCollectionData(
-  collectionName
-){
-
-  try{
-
-    const snapshot =
-      await getDocs(
-        query(
-          collection(
-            db,
-            collectionName
-          ),
-          orderBy(
-            "createdAt",
-            "desc"
-          )
-        )
-      );
-
-    return snapshot.docs.map(
-      doc => ({
-        id:doc.id,
-        ...doc.data()
-      })
-    );
-
-  }catch(error){
-
-    console.error(
-      collectionName,
-      error
-    );
-
-    return [];
-
-  }
-
+$("tbody").innerHTML=rows.map(item=>`
+<tr>
+${s.fields.map(f=>`<td>${esc(item[f[0]]??"-")}</td>`).join("")}
+<td>
+<div class="actions">
+<button class="action" data-a="edit" data-id="${item.id}">Edit</button>
+<button class="action verify" data-a="verify" data-id="${item.id}">Verifikasi</button>
+<button class="action reject" data-a="reject" data-id="${item.id}">Tolak</button>
+<button class="action delete" data-a="delete" data-id="${item.id}">Hapus</button>
+</div>
+</td>
+</tr>
+`).join("");
 }
 
+function openModal(item=null){
+editing=item?.id||null;
+$("modalTitle").textContent=editing?"Edit Data":"Tambah Data";
 
-function renderList(
-  elementId,
-  items,
-  formatter
-){
+$("fields").innerHTML=schemas[current].fields.map(f=>{
+const[key,label,type,options]=f;
+const value=item?.[key]??"";
 
-  const element =
-    document.getElementById(
-      elementId
-    );
-
-  if(items.length === 0){
-
-    element.innerHTML =
-      '<div class="empty">' +
-      'Belum ada data.' +
-      '</div>';
-
-    return;
-
-  }
-
-  element.innerHTML =
-    items.map(formatter).join("");
-
+if(type==="select"){
+return `<label>${label}<select name="${key}">
+${options.map(o=>`<option value="${o}" ${value===o?"selected":""}>${o}</option>`).join("")}
+</select></label>`;
 }
 
+return `<label>${label}<input name="${key}" type="${type}" value="${esc(value)}"></label>`;
+}).join("");
 
-async function loadDashboard(){
+$("modal").classList.add("active");
+}
 
-  const [
-    mediators,
-    usedCars,
-    insurance
-  ] =
-    await Promise.all([
+function closeModal(){
+$("modal").classList.remove("active");
+editing=null;
+$("crudForm").reset();
+}
 
-      getCollectionData(
-        "mediators"
-      ),
+$("add").onclick=()=>openModal();
+$("close").onclick=closeModal;
+$("cancel").onclick=closeModal;
 
-      getCollectionData(
-        "used_cars"
-      ),
+$("modal").onclick=e=>{
+if(e.target===$("modal"))closeModal();
+};
 
-      getCollectionData(
-        "insurance_requests"
-      )
+$("crudForm").onsubmit=async e=>{
+e.preventDefault();
 
-    ]);
+const fd=new FormData(e.target);
+const obj={};
 
+schemas[current].fields.forEach(f=>{
+let v=fd.get(f[0]);
+if(f[2]==="number")v=Number(v)||0;
+obj[f[0]]=v;
+});
 
-  document
-    .getElementById(
-      "mediatorCount"
-    )
-    .textContent =
-    mediators.length;
+if(current==="used_cars"){
+obj.adminFee=Math.round((Number(obj.price)||0)*0.025);
+obj.adminFeeRate=0.025;
+}
 
+if(editing){
+await updateDoc(doc(db,current,editing),{
+...obj,
+updatedAt:serverTimestamp()
+});
+}else{
+await addDoc(collection(db,current),{
+...obj,
+createdAt:serverTimestamp(),
+updatedAt:serverTimestamp()
+});
+}
 
-  document
-    .getElementById(
-      "usedCarCount"
-    )
-    .textContent =
-    usedCars.length;
+closeModal();
+await refresh();
+};
 
+$("tbody").onclick=async e=>{
+const b=e.target.closest("[data-a]");
+if(!b)return;
 
-  document
-    .getElementById(
-      "insuranceCount"
-    )
-    .textContent =
-    insurance.length;
+const item=data.find(x=>x.id===b.dataset.id);
+const ref=doc(db,current,b.dataset.id);
 
+if(b.dataset.a==="edit"){
+openModal(item);
+return;
+}
 
-  renderList(
-    "mediatorList",
-    mediators,
-    item => `
-      <article class="data-card">
-        <div class="data-card-header">
-          <div>
-            <strong>
-              ${escapeHtml(item.name)}
-            </strong>
-            <small>
-              ${escapeHtml(item.publicId)}
-            </small>
-          </div>
-          <small>
-            ${escapeHtml(item.city)}
-          </small>
-        </div>
+if(b.dataset.a==="delete"){
+if(confirm("Hapus data ini?")){
+await deleteDoc(ref);
+await refresh();
+}
+return;
+}
 
-        <div class="status">
-          ${escapeHtml(item.status)}
-        </div>
-      </article>
-    `
-  );
+if(b.dataset.a==="verify"){
+const update={updatedAt:serverTimestamp()};
 
+if(current==="payments")update.status="verified";
+else{
+update.status="approved";
+if("paymentStatus"in item)update.paymentStatus="paid";
+}
 
-  renderList(
-    "usedCarList",
-    usedCars,
-    item => `
-      <article class="data-card">
-        <div class="data-card-header">
-          <div>
-            <strong>
-              ${escapeHtml(item.car)}
-            </strong>
-            <small>
-              ${escapeHtml(item.publicId)}
-            </small>
-          </div>
-          <small>
-            ${escapeHtml(item.year)}
-          </small>
-        </div>
+await updateDoc(ref,update);
+await refresh();
+return;
+}
 
-        <div class="status">
-          ${escapeHtml(item.status)}
-        </div>
-      </article>
-    `
-  );
+if(b.dataset.a==="reject"){
+const update={
+status:"rejected",
+updatedAt:serverTimestamp()
+};
+if("paymentStatus"in item)update.paymentStatus="rejected";
 
+await updateDoc(ref,update);
+await refresh();
+}
+};
 
-  renderList(
-    "insuranceList",
-    insurance,
-    item => `
-      <article class="data-card">
-        <div class="data-card-header">
-          <div>
-            <strong>
-              ${escapeHtml(item.name)}
-            </strong>
-            <small>
-              ${escapeHtml(item.car)}
-            </small>
-          </div>
-          <small>
-            ${escapeHtml(item.year)}
-          </small>
-        </div>
+document.querySelectorAll(".nav").forEach(btn=>{
+btn.onclick=async()=>{
+document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+current=btn.dataset.col;
+$("search").value="";
+await load();
+};
+});
 
-        <div class="status">
-          ${escapeHtml(item.status)}
-        </div>
-      </article>
-    `
-  );
+$("search").oninput=()=>{
+const q=$("search").value.toLowerCase();
+render(data.filter(x=>JSON.stringify(x).toLowerCase().includes(q)));
+};
 
+async function refresh(){
+const all=await Promise.all([
+read("mediators"),
+read("used_cars"),
+read("insurance_requests"),
+read("orders"),
+read("payments")
+]);
+
+$("c1").textContent=all[0].length;
+$("c2").textContent=all[1].length;
+$("c3").textContent=all[2].length;
+$("c4").textContent=all[3].length;
+$("c5").textContent=all[4].length;
+
+await load();
 }
