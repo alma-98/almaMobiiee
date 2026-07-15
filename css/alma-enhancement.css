@@ -862,3 +862,32 @@
     grid-template-columns:1fr;
   }
 }
+
+
+/* ALMA USED CAR CATALOG VISIBILITY FIX */
+
+#katalog-mobil-second{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+#katalog-mobil-second .container{
+  display:block !important;
+}
+
+#usedCarCatalogGrid{
+  display:grid;
+}
+
+#usedCarCatalogGrid:empty{
+  display:none;
+}
+
+#usedCarCatalogEmpty{
+  display:block;
+}
+
+#usedCarCatalogEmpty[hidden]{
+  display:none !important;
+}
