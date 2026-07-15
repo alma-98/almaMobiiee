@@ -1776,3 +1776,84 @@ footer{
   }
 
 }
+
+/* ========================================
+   ALMAMOBIIEE X AUTO2000
+======================================== */
+
+.collab-brand{
+  display:flex !important;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
+}
+
+.alma-word{
+  color:#111318 !important;
+  font-weight:900;
+}
+
+.brand-x{
+  color:#9ca3af !important;
+  font-size:.75em;
+  font-weight:500;
+}
+
+.auto2000-word{
+  color:#e30613 !important;
+  font-weight:900;
+}
+
+.collab-hero-brand{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.hero-alma{
+  color:#ffffff !important;
+}
+
+.hero-x{
+  color:rgba(255,255,255,.55) !important;
+  font-size:.65em;
+  font-weight:400;
+}
+
+.hero-auto2000{
+  color:#ff2432 !important;
+}
+
+.footer-brand .alma-word{
+  color:#ffffff !important;
+}
+
+.footer-brand .auto2000-word{
+  color:#e30613 !important;
+}
+
+@media(max-width:600px){
+
+  .collab-brand{
+    gap:5px;
+  }
+
+  .collab-brand .alma-word{
+    font-size:18px;
+  }
+
+  .collab-brand .auto2000-word{
+    font-size:18px;
+  }
+
+  .collab-hero-brand{
+    gap:9px;
+  }
+
+  .hero-alma,
+  .hero-auto2000{
+    font-size:34px;
+  }
+
+}
