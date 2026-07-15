@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Pemilik | almaMobiiee</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}
+header{background:#111827;color:#fff;padding:20px}.container{max-width:1250px;margin:auto;padding:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:#fff;padding:20px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06);margin-bottom:20px}
+input,select,textarea{width:100%;padding:12px;margin:5px 0 12px;border:1px solid #d1d5db;border-radius:9px}
+button{padding:10px 14px;border:0;border-radius:9px;cursor:pointer;font-weight:700;margin:2px}
+.primary{background:#e30613;color:#fff}.dark{background:#111827;color:#fff}.danger{background:#dc2626;color:#fff}.success{background:#16a34a;color:#fff}
+table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top}
+.table-wrap{overflow:auto}.hidden{display:none!important}.login{max-width:420px;margin:70px auto}.muted{color:#64748b}
+</style>
+</head>
+<body>
+
+<div id="loginScreen" class="login card">
+  <h1>Admin Pemilik</h1>
+  <p class="muted">almaMobiiee Management</p>
+  <input type="password" id="adminPassword" placeholder="Password Admin">
+  <button class="primary" onclick="loginAdmin()">Masuk</button>
+  <p class="muted">Password awal: admin123</p>
+</div>
+
+<div id="adminApp" class="hidden">
+<header>
+  <h2>almaMobiiee — Admin Pemilik</h2>
+  <button class="danger" onclick="logoutAdmin()">Keluar</button>
+</header>
+
+<div class="container">
+  <div class="grid">
+    <div class="card"><h3>Total Produk</h3><h2 id="totalProducts">0</h2></div>
+    <div class="card"><h3>Pesanan Masuk</h3><h2 id="totalOrders">0</h2></div>
+    <div class="card"><h3>Menunggu Verifikasi</h3><h2 id="waitingOrders">0</h2></div>
+  </div>
+
+  <div class="card">
+    <h2>Input Kendaraan, Aksesori & Promo</h2>
+    <input type="hidden" id="editId">
+    <input id="productName" placeholder="Nama kendaraan / aksesori">
+    <select id="productCategory">
+      <option>Mobil Baru</option>
+      <option>Mobil Second</option>
+      <option>Aksesori</option>
+    </select>
+    <input id="productPrice" type="number" placeholder="Harga">
+    <textarea id="productPromo" placeholder="Promo, bonus atau keterangan"></textarea>
+    <input id="productImage" placeholder="URL gambar">
+    <button class="primary" onclick="saveProduct()">Simpan / Update Langsung</button>
+    <button class="dark" onclick="resetForm()">Reset</button>
+  </div>
+
+  <div class="card">
+    <h2>Produk & Promo</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Kategori</th><th>Produk</th><th>Harga</th><th>Promo</th><th>Aksi</th></tr></thead>
+        <tbody id="productTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Pesanan Masuk & Riwayat</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Pelanggan</th><th>Produk</th><th>Pembayaran</th><th>Status</th><th>Aksi</th></tr></thead>
+        <tbody id="orderTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const DB={get(k,d=[]){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+const rp=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
+
+function loginAdmin(){
+  if(document.getElementById("adminPassword").value!=="admin123"){alert("Password salah");return}
+  sessionStorage.setItem("alma_admin","true");showAdmin()
+}
+function logoutAdmin(){sessionStorage.removeItem("alma_admin");location.reload()}
+function showAdmin(){loginScreen.classList.add("hidden");adminApp.classList.remove("hidden");render()}
+function resetForm(){editId.value="";productName.value="";productPrice.value="";productPromo.value="";productImage.value=""}
+
+function saveProduct(){
+  if(!productName.value.trim()){alert("Nama wajib diisi");return}
+  let products=DB.get("alma_products",[]);
+  const data={
+    id:editId.value||"PRD-"+Date.now(),
+    name:productName.value.trim(),
+    category:productCategory.value,
+    price:Number(productPrice.value),
+    promo:productPromo.value,
+    image:productImage.value,
+    active:true
+  };
+  const i=products.findIndex(p=>p.id===data.id);
+  if(i>=0)products[i]=data;else products.unshift(data);
+  DB.set("alma_products",products);resetForm();render();alert("Data berhasil disimpan")
+}
+
+function editProduct(id){
+  const p=DB.get("alma_products",[]).find(x=>x.id===id);if(!p)return;
+  editId.value=p.id;productName.value=p.name;productCategory.value=p.category;productPrice.value=p.price;productPromo.value=p.promo||"";productImage.value=p.image||"";
+  window.scrollTo({top:0,behavior:"smooth"})
+}
+
+function deleteProduct(id){
+  if(!confirm("Hapus data ini?"))return;
+  DB.set("alma_products",DB.get("alma_products",[]).filter(p=>p.id!==id));render()
+}
+
+function updateOrder(id,status){
+  const orders=DB.get("alma_orders",[]);
+  const o=orders.find(x=>x.id===id);if(o)o.status=status;
+  DB.set("alma_orders",orders);render()
+}
+
+function deleteOrder(id){
+  if(!confirm("Hapus pesanan ini?"))return;
+  DB.set("alma_orders",DB.get("alma_orders",[]).filter(o=>o.id!==id));render()
+}
+
+function render(){
+  const products=DB.get("alma_products",[]);
+  const orders=DB.get("alma_orders",[]);
+  totalProducts.textContent=products.length;
+  totalOrders.textContent=orders.length;
+  waitingOrders.textContent=orders.filter(o=>o.status==="Menunggu Verifikasi").length;
+
+  productTable.innerHTML=products.map(p=>`
+    <tr>
+      <td>${p.category}</td><td>${p.name}</td><td>${rp(p.price)}</td><td>${p.promo||"-"}</td>
+      <td><button class="dark" onclick="editProduct('${p.id}')">Edit</button><button class="danger" onclick="deleteProduct('${p.id}')">Hapus</button></td>
+    </tr>`).join("");
+
+  orderTable.innerHTML=orders.map(o=>`
+    <tr>
+      <td>${o.id}</td>
+      <td>${o.customer}<br><span class="muted">${o.phone||""}<br>${o.email||""}</span></td>
+      <td>${o.product}<br>${rp(o.amount)}</td>
+      <td>${o.payment}</td>
+      <td>${o.status}</td>
+      <td>
+        <button class="success" onclick="updateOrder('${o.id}','Pembayaran Terverifikasi')">Verifikasi</button>
+        <button class="dark" onclick="updateOrder('${o.id}','Diproses')">Proses</button>
+        <button class="primary" onclick="updateOrder('${o.id}','Selesai')">Selesai</button>
+        <button class="danger" onclick="deleteOrder('${o.id}')">Hapus</button>
+      </td>
+    </tr>`).join("");
+}
+
+if(sessionStorage.getItem("alma_admin")==="true")showAdmin();
+</script>
+</body>
+</html>

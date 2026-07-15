@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="css/commerce.css">
+
+<section class="alma-commerce" id="produk">
+  <div class="alma-container">
+    <h2>Mobil, Aksesori & Promo almaMobiiee</h2>
+    <p class="alma-commerce-subtitle">Pesan kendaraan baru, mobil second dan aksesori mobil.</p>
+
+    <div class="alma-tabs">
+      <button class="active" onclick="almaSetFilter('Semua',this)">Semua</button>
+      <button onclick="almaSetFilter('Mobil Baru',this)">Mobil Baru</button>
+      <button onclick="almaSetFilter('Mobil Second',this)">Mobil Second</button>
+      <button onclick="almaSetFilter('Aksesori',this)">Aksesori</button>
+    </div>
+
+    <div id="almaProductGrid" class="alma-grid"></div>
+  </div>
+</section>
+
+<div id="almaOrderModal" class="alma-modal">
+  <div class="alma-modal-box">
+    <button onclick="almaCloseOrder()" style="float:right;border:0;background:none;font-size:24px;cursor:pointer">×</button>
+    <h2>Form Pemesanan</h2>
+
+    <form onsubmit="almaSubmitOrder(event)">
+      <input type="hidden" id="almaOrderProductId">
+      <input type="hidden" id="almaOrderAmount">
+
+      <label>Produk</label>
+      <input class="alma-input" id="almaOrderProduct" readonly>
+
+      <label>Nama Lengkap</label>
+      <input class="alma-input" id="almaCustomerName" required>
+
+      <label>Nomor HP</label>
+      <input class="alma-input" id="almaCustomerPhone" required>
+
+      <label>Email</label>
+      <input class="alma-input" id="almaCustomerEmail" type="email">
+
+      <label>Alamat</label>
+      <textarea class="alma-input" id="almaCustomerAddress"></textarea>
+
+      <label>Metode Pembayaran</label>
+      <select class="alma-input" id="almaPaymentMethod">
+        <option value="QRIS">QRIS</option>
+        <option value="Transfer Rekening Alma 1670003828281">Transfer Rekening Alma — 1670003828281</option>
+      </select>
+
+      <div class="alma-payment-box">
+        <strong>Total: <span id="almaOrderTotal">Rp0</span></strong>
+        <img class="alma-qris" src="assets/images/qris-almamobiiee.png" alt="QRIS almaMobiiee">
+        <p><strong>Transfer Rekening Alma</strong><br>1670003828281</p>
+        <small>Pembayaran akan diverifikasi oleh Admin Pemilik.</small>
+      </div>
+
+      <label>Catatan Pesanan</label>
+      <textarea class="alma-input" id="almaCustomerNote"></textarea>
+
+      <button class="alma-btn alma-btn-primary" type="submit">Buat Pesanan</button>
+    </form>
+  </div>
+</div>
+
+<a class="alma-admin-link" href="admin/">Admin Pemilik</a>
+<script src="js/commerce.js"></script>
