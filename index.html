@@ -217,6 +217,7 @@ padding:40px;
 
 </style>
 
+  <link rel="stylesheet" href="css/alma-sms.css">
 </head>
 
 <body>
@@ -2207,81 +2208,76 @@ window.open(
 <script src="js/commerce.js"></script>
 
 <!-- ALMAMOBIIEE_COMMERCE_END -->
-<!-- ALMA_SMS_POPUP_START -->
-<link rel="stylesheet" href="css/alma-sms-popup.css">
+
+<!-- ALMA_SMS_START -->
+<button
+  class="alma-sms-trigger"
+  type="button"
+  onclick="almaOpenSMS()"
+  aria-label="Hubungi Alma melalui SMS"
+>
+  ✉
+  <span>SMS Alma</span>
+</button>
 
 <div
-  id="almaSMSOverlay"
-  class="alma-sms-overlay"
-  aria-hidden="true"
+  id="almaSmsModal"
+  class="alma-sms-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="almaSmsTitle"
 >
-  <div
-    class="alma-sms-popup"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="almaSMSTitle"
-  >
+  <div class="alma-sms-card">
+
     <button
       class="alma-sms-close"
       type="button"
-      onclick="closeAlmaSMSPopup()"
+      onclick="almaCloseSMS()"
       aria-label="Tutup"
     >
       ×
     </button>
 
-    <div class="alma-sms-icon">
+    <div class="alma-sms-badge">
       ✉
     </div>
 
-    <h2 id="almaSMSTitle">
+    <h2 id="almaSmsTitle">
       Hubungi Alma via SMS
     </h2>
 
     <p>
       WhatsApp sedang mengalami kendala.
-      Untuk informasi kendaraan, promo,
-      aksesori, dan pemesanan, silakan
-      hubungi Alma melalui SMS.
+      Silakan kirim SMS untuk informasi kendaraan,
+      promo, aksesori, dan pemesanan.
     </p>
 
-    <div class="alma-sms-number">
+    <div class="alma-sms-phone">
       085283397198
     </div>
 
     <a
-      id="almaSMSLink"
-      class="alma-sms-btn"
-      href="sms:085283397198?body=Halo%20Alma%2C%20saya%20tertarik%20dengan%20informasi%20di%20almaMobiiee."
+      id="almaSmsAction"
+      class="alma-sms-action"
+      href="sms:085283397198"
     >
-      Kirim SMS ke Alma
+      Kirim SMS Sekarang
     </a>
 
     <button
-      class="alma-sms-btn alma-sms-btn-secondary"
+      class="alma-sms-cancel"
       type="button"
-      onclick="closeAlmaSMSPopup()"
+      onclick="almaCloseSMS()"
     >
-      Lanjut Lihat Website
+      Tutup
     </button>
 
-    <div class="alma-sms-note">
-      SMS akan dibuka melalui aplikasi pesan di perangkat Anda.
-    </div>
   </div>
 </div>
 
-<button
-  class="alma-sms-floating"
-  type="button"
-  onclick="openAlmaSMSPopup()"
->
-  ✉ SMS Alma
-</button>
+<script src="js/alma-sms.js"></script>
+<!-- ALMA_SMS_END -->
 
-<script src="js/alma-sms-popup.js"></script>
-
-<!-- ALMA_SMS_POPUP_END -->
 </body>
 
 </html>
