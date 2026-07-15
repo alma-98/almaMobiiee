@@ -1172,112 +1172,150 @@
      MEDIATOR
 ========================================= -->
 
-<section
-  class="section mediator-section"
-  id="mediator"
->
+<section class="section" id="mediator">
 
-  <div class="container mediator-layout">
+  <div class="container">
 
-    <div class="partnership-card mediator-card">
-  <div class="service-icon">
-    <span class="partnership-badge">MOBIL SECOND</span>
+    <div class="section-header">
+      <span class="eyebrow">MEDIATOR MOBIL SECOND</span>
 
-    <h3>Jadi Mediator almaMobiiee</h3>
+      <h2>
+        Jadi Mediator
+        <span>almaMobiiee</span>
+      </h2>
 
-    <p>
-      Daftarkan diri sebagai mediator untuk membantu mempertemukan
-      calon pembeli dengan peluang kendaraan.
-    </p>
-
-    <ul>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Pendaftaran data mediator</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Nomor registrasi otomatis</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Pembayaran biaya administrasi</span>
-      </li>
-      <li>
-        <span class="check-icon">✓</span>
-        <span>Verifikasi oleh administrator</span>
-      </li>
-    </ul>
-
-    <a href="#form-mediator"
-       class="btn btn-primary  ">
-      Daftar Sebagai Mediator
-    </a>
-  </div>
-</div>
+      <p>
+        Daftarkan diri sebagai mediator untuk membantu mempertemukan
+        calon pembeli dengan peluang kendaraan.
+      </p>
+    </div>
 
 
-    <form
-      class="premium-form"
-      id="mediatorForm"
-    >
+    <div class="simulation-grid">
 
-      <h3>
-        Form Pendaftaran Mediator
-      </h3>
+      <!-- INFORMASI MEDIATOR -->
+      <div class="simulation-card">
 
-      <label>
-        Nama Lengkap
-        <input
-          type="text"
-          id="mediatorName"
-          required
+        <div class="simulation-card-header">
+          <span class="simulation-icon">🤝</span>
+
+          <div>
+            <h3>Jadi Mediator almaMobiiee</h3>
+            <p>Ikuti proses pendaftaran mediator berikut.</p>
+          </div>
+        </div>
+
+
+        <div class="simulation-result">
+
+          <div class="simulation-result-item">
+            <span>✓</span>
+            <strong>Pendaftaran data mediator</strong>
+          </div>
+
+          <div class="simulation-result-item">
+            <span>✓</span>
+            <strong>Nomor registrasi otomatis</strong>
+          </div>
+
+          <div class="simulation-result-item">
+            <span>✓</span>
+            <strong>Pembayaran biaya administrasi</strong>
+          </div>
+
+          <div class="simulation-result-item">
+            <span>✓</span>
+            <strong>Verifikasi oleh administrator</strong>
+          </div>
+
+        </div>
+
+        <a
+          href="#form-mediator"
+          class="btn btn-primary"
+          style="width:100%; margin-top:24px; text-align:center;"
         >
-      </label>
+          Daftar Sebagai Mediator
+        </a>
 
-      <label>
-        Nomor HP
-        <input
-          type="tel"
-          id="mediatorPhone"
-          required
+      </div>
+
+
+      <!-- FORM MEDIATOR -->
+      <div class="simulation-card" id="form-mediator">
+
+        <div class="simulation-card-header">
+          <span class="simulation-icon">📝</span>
+
+          <div>
+            <h3>Form Pendaftaran Mediator</h3>
+            <p>Lengkapi data untuk mendapatkan nomor registrasi.</p>
+          </div>
+        </div>
+
+
+        <form
+          class="premium-form"
+          id="mediatorForm"
         >
-      </label>
 
-      <label>
-        Email
-        <input
-          type="email"
-          id="mediatorEmail"
-          required
-        >
-      </label>
+          <label>
+            Nama Lengkap
+            <input
+              type="text"
+              id="mediatorName"
+              name="name"
+              placeholder="Masukkan nama lengkap"
+              required
+            >
+          </label>
 
-      <label>
-        Kota / Area
-        <input
-          type="text"
-          id="mediatorCity"
-          required
-        >
-      </label>
+          <label>
+            Nomor WhatsApp
+            <input
+              type="tel"
+              id="mediatorPhone"
+              name="phone"
+              placeholder="Contoh: 081234567890"
+              required
+            >
+          </label>
 
-      <label>
-        Alasan Bergabung
-        <textarea
-          id="mediatorReason"
-          rows="3"
-        ></textarea>
-      </label>
+          <label>
+            Email
+            <input
+              type="email"
+              id="mediatorEmail"
+              name="email"
+              placeholder="Masukkan email"
+              required
+            >
+          </label>
 
-      <button
-        type="submit"
-        class="form-submit-button"
-      >
-        Daftar & Lanjut Pembayaran
-      </button>
+          <label>
+            Kota / Domisili
+            <input
+              type="text"
+              id="mediatorCity"
+              name="city"
+              placeholder="Masukkan kota atau domisili"
+              required
+            >
+          </label>
 
-    </form>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width:100%;"
+          >
+            Daftar Sebagai Mediator
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
 
   </div>
 
