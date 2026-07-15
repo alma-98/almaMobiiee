@@ -54,14 +54,60 @@
       <span></span>
     </button>
 
+    
     <nav id="mainNav">
       <a href="#home">Beranda</a>
-      <a href="#mobil">Pilihan Mobil</a>
-      <a href="#layanan">Layanan</a>
-      <a href="#tentang">Tentang Alma</a>
-      <a href="#faq">FAQ</a>
-      <a href="#kontak" class="nav-cta">Konsultasi</a>
+
+      <div class="nav-dropdown">
+        <button
+          type="button"
+          class="nav-dropdown-button"
+        >
+          Kendaraan
+          <span>⌄</span>
+        </button>
+
+        <div class="nav-dropdown-menu">
+          <a href="#mobil">
+            <strong>Mobil Baru</strong>
+            <small>Pilihan kendaraan Toyota</small>
+          </a>
+
+          <a href="#mobil-second">
+            <strong>Mobil Second</strong>
+            <small>Jual & cari kendaraan bekas</small>
+          </a>
+
+          <a href="#simulasi">
+            <strong>Simulasi Kredit</strong>
+            <small>Hitung estimasi cicilan</small>
+          </a>
+        </div>
+      </div>
+
+      <a href="#accessories">Accessories</a>
+
+      <a href="#asuransi">Asuransi</a>
+
+      <a href="#mediator">Mediator</a>
+
+      <button
+        type="button"
+        class="cart-nav-button"
+        onclick="openCart()"
+      >
+        Keranjang
+        <span id="cartCount">0</span>
+      </button>
+
+      <a
+        href="admin/"
+        class="admin-nav-link"
+      >
+        Admin
+      </a>
     </nav>
+
 
   </div>
 </header>
@@ -523,6 +569,876 @@
 
   </div>
 </section>
+
+
+
+
+<!-- =========================================
+     ACCESSORIES
+========================================= -->
+
+<section
+  class="section marketplace-section"
+  id="accessories"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-label">
+          Automotive Store
+        </span>
+
+        <h2>
+          Accessories Kendaraan
+        </h2>
+      </div>
+
+      <p>
+        Pilih kebutuhan accessories kendaraan
+        dan masukkan produk ke keranjang.
+      </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+      <article
+        class="shop-product"
+        data-name="Cover STNK Premium"
+        data-price="75000"
+      >
+
+        <div class="product-visual">
+          <span>STNK</span>
+        </div>
+
+        <div class="product-info">
+          <small>Accessories</small>
+          <h3>Cover STNK Premium</h3>
+          <strong>Rp75.000</strong>
+
+          <button
+            type="button"
+            onclick="addToCart(
+              'Cover STNK Premium',
+              75000
+            )"
+          >
+            + Keranjang
+          </button>
+        </div>
+
+      </article>
+
+
+      <article
+        class="shop-product"
+        data-name="Cover Remote Mobil"
+        data-price="125000"
+      >
+
+        <div class="product-visual">
+          <span>KEY</span>
+        </div>
+
+        <div class="product-info">
+          <small>Accessories</small>
+          <h3>Cover Remote Mobil</h3>
+          <strong>Rp125.000</strong>
+
+          <button
+            type="button"
+            onclick="addToCart(
+              'Cover Remote Mobil',
+              125000
+            )"
+          >
+            + Keranjang
+          </button>
+        </div>
+
+      </article>
+
+
+      <article
+        class="shop-product"
+        data-name="Car Organizer"
+        data-price="185000"
+      >
+
+        <div class="product-visual">
+          <span>CAR</span>
+        </div>
+
+        <div class="product-info">
+          <small>Interior</small>
+          <h3>Car Organizer</h3>
+          <strong>Rp185.000</strong>
+
+          <button
+            type="button"
+            onclick="addToCart(
+              'Car Organizer',
+              185000
+            )"
+          >
+            + Keranjang
+          </button>
+        </div>
+
+      </article>
+
+
+      <article
+        class="shop-product"
+        data-name="Emergency Car Kit"
+        data-price="250000"
+      >
+
+        <div class="product-visual">
+          <span>KIT</span>
+        </div>
+
+        <div class="product-info">
+          <small>Safety</small>
+          <h3>Emergency Car Kit</h3>
+          <strong>Rp250.000</strong>
+
+          <button
+            type="button"
+            onclick="addToCart(
+              'Emergency Car Kit',
+              250000
+            )"
+          >
+            + Keranjang
+          </button>
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ASURANSI
+========================================= -->
+
+<section
+  class="section insurance-market-section"
+  id="asuransi"
+>
+
+  <div class="container service-form-layout">
+
+    <div>
+
+      <span class="section-label">
+        Proteksi Kendaraan
+      </span>
+
+      <h2 class="large-section-title">
+        Konsultasi Asuransi Mobil
+      </h2>
+
+      <p class="large-section-copy">
+        Isi data kendaraan untuk mendapatkan
+        konsultasi kebutuhan perlindungan kendaraan.
+      </p>
+
+
+      <div class="info-feature-list">
+
+        <div>
+          <span>01</span>
+          <strong>Comprehensive</strong>
+        </div>
+
+        <div>
+          <span>02</span>
+          <strong>Total Loss Only</strong>
+        </div>
+
+        <div>
+          <span>03</span>
+          <strong>Konsultasi Kebutuhan</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <form
+      class="premium-form"
+      id="insuranceForm"
+    >
+
+      <h3>
+        Permintaan Konsultasi
+      </h3>
+
+      <label>
+        Nama
+        <input
+          type="text"
+          id="insuranceName"
+          required
+        >
+      </label>
+
+      <label>
+        Jenis Mobil
+        <input
+          type="text"
+          id="insuranceCar"
+          placeholder="Contoh: Toyota Avanza"
+          required
+        >
+      </label>
+
+      <label>
+        Tahun Kendaraan
+        <input
+          type="number"
+          id="insuranceYear"
+          min="1990"
+          max="2030"
+          required
+        >
+      </label>
+
+      <button
+        type="submit"
+        class="form-submit-button"
+      >
+        Kirim Permintaan
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MOBIL SECOND
+========================================= -->
+
+<section
+  class="section used-car-section"
+  id="mobil-second"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-label">
+          Used Car Marketplace
+        </span>
+
+        <h2>
+          Jual Mobil Second
+        </h2>
+      </div>
+
+      <p>
+        Daftarkan kendaraan Anda untuk proses
+        review dan publikasi oleh Alma.
+      </p>
+
+    </div>
+
+
+    <div class="used-car-layout">
+
+      <div class="used-car-info">
+
+        <div class="fee-card">
+
+          <span class="fee-label">
+            Biaya Layanan
+          </span>
+
+          <strong>
+            2,5%
+          </strong>
+
+          <p>
+            Perhitungan biaya layanan berdasarkan
+            harga kendaraan yang dimasukkan.
+          </p>
+
+        </div>
+
+
+        <div class="payment-mini-card">
+
+          <small>
+            Pembayaran
+          </small>
+
+          <strong>
+            Bank Mandiri
+          </strong>
+
+          <span>
+            167 0003828281
+          </span>
+
+          <span>
+            a.n. Alma
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <form
+        class="premium-form"
+        id="usedCarForm"
+      >
+
+        <h3>
+          Data Kendaraan
+        </h3>
+
+        <div class="two-column-form">
+
+          <label>
+            Nama Pemilik
+            <input
+              type="text"
+              id="sellerName"
+              required
+            >
+          </label>
+
+          <label>
+            Nomor HP
+            <input
+              type="tel"
+              id="sellerPhone"
+              required
+            >
+          </label>
+
+        </div>
+
+
+        <label>
+          Merek & Tipe Mobil
+          <input
+            type="text"
+            id="sellerCar"
+            placeholder="Contoh: Toyota Avanza G"
+            required
+          >
+        </label>
+
+
+        <div class="two-column-form">
+
+          <label>
+            Tahun
+            <input
+              type="number"
+              id="sellerYear"
+              required
+            >
+          </label>
+
+          <label>
+            Harga Mobil
+            <input
+              type="number"
+              id="sellerPrice"
+              min="1"
+              required
+            >
+          </label>
+
+        </div>
+
+
+        <div
+          class="fee-calculator"
+          id="sellerFeeBox"
+        >
+
+          <span>
+            Estimasi biaya layanan 2,5%
+          </span>
+
+          <strong id="sellerFee">
+            Rp0
+          </strong>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="form-submit-button"
+        >
+          Lanjutkan Pendaftaran
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SIMULASI
+========================================= -->
+
+<section
+  class="section simulation-section"
+  id="simulasi"
+>
+
+  <div class="container simulation-layout">
+
+    <div>
+
+      <span class="section-label">
+        Credit Calculator
+      </span>
+
+      <h2 class="large-section-title">
+        Simulasi Kredit Mobil
+      </h2>
+
+      <p class="large-section-copy">
+        Hitung estimasi sederhana cicilan kendaraan.
+        Hasil ini hanya simulasi dan bukan persetujuan
+        pembiayaan final.
+      </p>
+
+    </div>
+
+
+    <div class="simulation-card">
+
+      <label>
+        Harga Mobil
+        <input
+          type="number"
+          id="simPrice"
+          value="300000000"
+        >
+      </label>
+
+      <label>
+        DP (%)
+        <input
+          type="number"
+          id="simDp"
+          value="20"
+          min="0"
+          max="100"
+        >
+      </label>
+
+      <label>
+        Tenor
+        <select id="simTenor">
+          <option value="12">12 Bulan</option>
+          <option value="24">24 Bulan</option>
+          <option value="36" selected>
+            36 Bulan
+          </option>
+          <option value="48">48 Bulan</option>
+          <option value="60">60 Bulan</option>
+        </select>
+      </label>
+
+      <button
+        type="button"
+        class="form-submit-button"
+        onclick="calculateCredit()"
+      >
+        Hitung Simulasi
+      </button>
+
+
+      <div class="simulation-result">
+
+        <small>
+          Estimasi Cicilan / Bulan
+        </small>
+
+        <strong id="simulationMonthly">
+          Rp0
+        </strong>
+
+        <span id="simulationDetail">
+          Masukkan data untuk melihat simulasi.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MEDIATOR
+========================================= -->
+
+<section
+  class="section mediator-section"
+  id="mediator"
+>
+
+  <div class="container mediator-layout">
+
+    <div class="mediator-copy">
+
+      <span class="section-label">
+        Partnership
+      </span>
+
+      <h2 class="large-section-title">
+        Jadi Mediator almaMobiiee
+      </h2>
+
+      <p class="large-section-copy">
+        Daftarkan diri sebagai mediator untuk
+        membantu mempertemukan calon pembeli
+        dengan peluang kendaraan.
+      </p>
+
+
+      <ul class="mediator-benefits">
+        <li>
+          Pendaftaran data mediator
+        </li>
+
+        <li>
+          Nomor registrasi otomatis
+        </li>
+
+        <li>
+          Pembayaran biaya administrasi
+        </li>
+
+        <li>
+          Verifikasi oleh administrator
+        </li>
+      </ul>
+
+    </div>
+
+
+    <form
+      class="premium-form"
+      id="mediatorForm"
+    >
+
+      <h3>
+        Form Pendaftaran Mediator
+      </h3>
+
+      <label>
+        Nama Lengkap
+        <input
+          type="text"
+          id="mediatorName"
+          required
+        >
+      </label>
+
+      <label>
+        Nomor HP
+        <input
+          type="tel"
+          id="mediatorPhone"
+          required
+        >
+      </label>
+
+      <label>
+        Email
+        <input
+          type="email"
+          id="mediatorEmail"
+          required
+        >
+      </label>
+
+      <label>
+        Kota / Area
+        <input
+          type="text"
+          id="mediatorCity"
+          required
+        >
+      </label>
+
+      <label>
+        Alasan Bergabung
+        <textarea
+          id="mediatorReason"
+          rows="3"
+        ></textarea>
+      </label>
+
+      <button
+        type="submit"
+        class="form-submit-button"
+      >
+        Daftar & Lanjut Pembayaran
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PAYMENT MODAL
+========================================= -->
+
+<div
+  class="payment-modal"
+  id="paymentModal"
+  aria-hidden="true"
+>
+
+  <div class="payment-dialog">
+
+    <button
+      type="button"
+      class="payment-close"
+      onclick="closePayment()"
+    >
+      ×
+    </button>
+
+
+    <div class="payment-header">
+
+      <span>
+        Pembayaran
+      </span>
+
+      <h2 id="paymentTitle">
+        Pembayaran Administrasi
+      </h2>
+
+      <p>
+        Lakukan pembayaran kemudian simpan
+        bukti transaksi untuk proses verifikasi.
+      </p>
+
+    </div>
+
+
+    <div class="payment-content">
+
+      <div class="payment-id-box">
+
+        <small>
+          ID Transaksi
+        </small>
+
+        <strong id="paymentId">
+          -
+        </strong>
+
+      </div>
+
+
+      <div class="payment-amount">
+
+        <small>
+          Total Pembayaran
+        </small>
+
+        <strong id="paymentAmount">
+          Rp0
+        </strong>
+
+      </div>
+
+
+      <div class="qris-wrapper">
+
+        <img
+          src="assets/images/qris-alma.png"
+          alt="QRIS pembayaran Alma"
+          onerror="this.style.display='none'; document.getElementById('qrisFallback').style.display='block';"
+        >
+
+        <div
+          id="qrisFallback"
+          class="qris-fallback"
+        >
+          QRIS belum tersedia di repository.
+        </div>
+
+      </div>
+
+
+      <div class="bank-payment-card">
+
+        <small>
+          Transfer Bank
+        </small>
+
+        <strong>
+          Bank Mandiri
+        </strong>
+
+        <span>
+          167 0003828281
+        </span>
+
+        <span>
+          a.n. Alma
+        </span>
+
+      </div>
+
+
+      <label class="proof-upload">
+
+        Bukti Pembayaran
+
+        <input
+          type="file"
+          id="paymentProof"
+          accept="image/*,.pdf"
+        >
+
+        <small>
+          Pada versi GitHub Pages, file dipilih
+          di perangkat Anda dan perlu dikirim
+          kepada Alma untuk verifikasi.
+        </small>
+
+      </label>
+
+
+      <button
+        type="button"
+        class="form-submit-button"
+        onclick="confirmPaymentSubmission()"
+      >
+        Saya Sudah Melakukan Pembayaran
+      </button>
+
+
+      <p class="payment-warning">
+        Pembayaran tidak otomatis dianggap berhasil.
+        Status harus diverifikasi oleh administrator.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================
+     CART DRAWER
+========================================= -->
+
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="closeCart()"
+></div>
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+>
+
+  <div class="cart-header">
+
+    <div>
+      <small>
+        almaMobiiee Store
+      </small>
+
+      <h2>
+        Keranjang
+      </h2>
+    </div>
+
+    <button
+      type="button"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div
+    class="cart-items"
+    id="cartItems"
+  ></div>
+
+
+  <div class="cart-footer">
+
+    <div class="cart-total">
+
+      <span>
+        Total
+      </span>
+
+      <strong id="cartTotal">
+        Rp0
+      </strong>
+
+    </div>
+
+    <button
+      type="button"
+      class="form-submit-button"
+      onclick="checkoutCart()"
+    >
+      Checkout
+    </button>
+
+  </div>
+
+</aside>
+
 
 
 <section class="contact-section" id="kontak">

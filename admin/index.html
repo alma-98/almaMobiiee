@@ -1,653 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Admin Pemilik | almaMobiiee</title>
+  <meta charset="UTF-8">
 
-<style>
-*{
-  box-sizing:border-box;
-}
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
 
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f3f4f6;
-  color:#111827;
-}
+  <meta
+    name="robots"
+    content="noindex,nofollow"
+  >
 
-.alma-admin-login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
+  <title>
+    Admin Alma | almaMobiiee
+  </title>
 
-.alma-admin-card{
-  width:min(100%,430px);
-  padding:32px;
-  background:#ffffff;
-  border-radius:24px;
-  box-shadow:0 25px 70px rgba(15,23,42,.12);
-}
 
-.alma-admin-logo{
-  width:64px;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:20px;
-  border-radius:18px;
-  background:#e30613;
-  color:#ffffff;
-  font-size:28px;
-  font-weight:900;
-}
+  <style>
 
-h1{
-  margin:0 0 8px;
-}
+    *{
+      box-sizing:border-box;
+    }
 
-p{
-  color:#64748b;
-  line-height:1.6;
-}
+    body{
+      margin:0;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:#f4f5f7;
+      color:#15171c;
+    }
 
-label{
-  display:block;
-  margin-top:16px;
-  margin-bottom:7px;
-  font-weight:700;
-}
+    .admin-shell{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:20px;
+    }
 
-input{
-  width:100%;
-  padding:14px;
-  border:1px solid #d1d5db;
-  border-radius:11px;
-  font-size:15px;
-}
+    .admin-card{
+      width:min(100%,480px);
+      padding:35px;
+      border:1px solid #e4e6ea;
+      border-radius:26px;
+      background:#fff;
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.10);
+    }
 
-button{
-  width:100%;
-  margin-top:20px;
-  padding:14px;
-  border:0;
-  border-radius:11px;
-  background:#e30613;
-  color:#ffffff;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer;
-}
+    .admin-brand{
+      color:#e30613;
+      font-size:13px;
+      font-weight:900;
+    }
 
-.alma-error{
-  display:none;
-  margin-top:15px;
-  padding:12px;
-  border-radius:10px;
-  background:#fff1f2;
-  color:#be123c;
-}
+    h1{
+      margin:12px 0 8px;
+      font-size:35px;
+      letter-spacing:-1.5px;
+    }
 
-.alma-dashboard{
-  display:none;
-  min-height:100vh;
-}
+    p{
+      color:#707782;
+      line-height:1.6;
+    }
 
-.alma-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:20px 30px;
-  background:#111827;
-  color:#ffffff;
-}
+    .security-box{
+      margin:25px 0;
+      padding:18px;
+      border-radius:15px;
+      background:#fff5f6;
+      color:#9b1018;
+      font-size:13px;
+    }
 
-.alma-header h2{
-  margin:0;
-}
+    label{
+      display:block;
+      margin:15px 0;
+      font-size:12px;
+      font-weight:800;
+    }
 
-.alma-header button{
-  width:auto;
-  margin:0;
-  background:#dc2626;
-}
+    input{
+      width:100%;
+      margin-top:7px;
+      padding:14px;
+      border:1px solid #e4e6ea;
+      border-radius:11px;
+      font:inherit;
+    }
 
-.alma-content{
-  max-width:1200px;
-  margin:auto;
-  padding:30px 20px;
-}
+    button{
+      width:100%;
+      min-height:50px;
+      border:0;
+      border-radius:12px;
+      background:#e30613;
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
 
-.alma-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
+    .back{
+      display:block;
+      margin-top:18px;
+      color:#6e7580;
+      text-align:center;
+      text-decoration:none;
+      font-size:12px;
+    }
 
-.alma-box{
-  padding:24px;
-  border-radius:18px;
-  background:#ffffff;
-  box-shadow:0 8px 30px rgba(15,23,42,.06);
-}
+  </style>
 
-.alma-box h3{
-  margin-top:0;
-}
-
-.alma-menu{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
-  margin-top:25px;
-}
-
-.alma-menu a{
-  display:block;
-  padding:20px;
-  border-radius:16px;
-  background:#ffffff;
-  color:#111827;
-  text-decoration:none;
-  font-weight:800;
-  box-shadow:0 8px 30px rgba(15,23,42,.06);
-}
-</style>
 </head>
+
 
 <body>
 
-<section
-  id="loginScreen"
-  class="alma-admin-login"
->
-  <div class="alma-admin-card">
+  <main class="admin-shell">
 
-    <div class="alma-admin-logo">
-      A
-    </div>
+    <section class="admin-card">
 
-    <h1>
-      Admin Pemilik
-    </h1>
+      <div class="admin-brand">
+        almaMobiiee • Administrator
+      </div>
 
-    <p>
-      Login khusus pemilik almaMobiiee.
-    </p>
+      <h1>
+        Admin Alma
+      </h1>
 
-    <form id="adminLoginForm">
+      <p>
+        Halaman administrator disiapkan untuk
+        akun pemilik almaMobiiee.
+      </p>
 
-      <label for="adminEmail">
-        Email
-      </label>
 
-      <input
-        id="adminEmail"
-        type="email"
-        autocomplete="username"
-        required
+      <div class="security-box">
+
+        <strong>
+          Mode Keamanan
+        </strong>
+
+        <br>
+
+        Password administrator tidak disimpan
+        di source code publik GitHub Pages.
+
+        Login penuh perlu dihubungkan ke layanan
+        autentikasi backend.
+
+      </div>
+
+
+      <form
+        onsubmit="
+          event.preventDefault();
+          alert(
+            'Login aman belum diaktifkan. ' +
+            'Hubungkan halaman ini ke backend authentication.'
+          );
+        "
       >
 
-      <label for="adminPassword">
-        Password
-      </label>
+        <label>
 
-      <input
-        id="adminPassword"
-        type="password"
-        autocomplete="current-password"
-        required
+          Email Administrator
+
+          <input
+            type="email"
+            value="alma.budsteddy88@gmail.com"
+            readonly
+          >
+
+        </label>
+
+
+        <label>
+
+          Password
+
+          <input
+            type="password"
+            placeholder="Password administrator"
+            autocomplete="current-password"
+          >
+
+        </label>
+
+
+        <button type="submit">
+          Login Admin
+        </button>
+
+      </form>
+
+
+      <a
+        href="../"
+        class="back"
       >
-
-      <button type="submit">
-        Masuk Admin
-      </button>
-
-      <div
-        id="loginError"
-        class="alma-error"
-      >
-        Email atau password tidak sesuai.
-      </div>
-
-    </form>
-
-  </div>
-</section>
-
-<section
-  id="adminDashboard"
-  class="alma-dashboard"
->
-
-  <header class="alma-header">
-
-    <div>
-      <strong>
-        almaMobiiee
-      </strong>
-      <h2>
-        Admin Pemilik
-      </h2>
-    </div>
-
-    <button onclick="logoutAdmin()">
-      Keluar
-    </button>
-
-  </header>
-
-  <main class="alma-content">
-
-    <div class="alma-grid">
-
-      <div class="alma-box">
-        <h3>Mobil Baru</h3>
-        <p>
-          Kelola kendaraan baru.
-        </p>
-      </div>
-
-      <div class="alma-box">
-        <h3>Mobil Second</h3>
-        <p>
-          Kelola unit kendaraan second.
-        </p>
-      </div>
-
-      <div class="alma-box">
-        <h3>Accessories</h3>
-        <p>
-          Kelola produk accessories mobil.
-        </p>
-      </div>
-
-      <div class="alma-box">
-        <h3>Promo</h3>
-        <p>
-          Update promo yang tampil di website.
-        </p>
-      </div>
-
-      <div class="alma-box">
-        <h3>Pesanan</h3>
-        <p>
-          Lihat pesanan pelanggan.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="alma-menu">
-
-      <a href="../">
-        ← Kembali ke Website
+        ← Kembali ke almaMobiiee
       </a>
 
-      <a href="../#mobil">
-        Kelola Mobil
-      </a>
-
-      <a href="../#mobil-second">
-        Kelola Mobil Second
-      </a>
-
-      <a href="../#accessories">
-        Kelola Accessories
-      </a>
-
-      <a href="../#promo">
-        Kelola Promo
-      </a>
-
-    </div>
+    </section>
 
   </main>
 
-<div
-  id="insuranceOrdersPanel"
-  style="
-    display:none;
-    max-width:1200px;
-    margin:0 auto 30px;
-    padding:0 20px;
-  "
->
-  <div
-    style="
-      background:#fff;
-      border-radius:18px;
-      padding:24px;
-      box-shadow:0 8px 30px rgba(15,23,42,.06);
-    "
-  >
-    <h2>
-      Pengajuan Asuransi
-    </h2>
-
-    <div
-      style="overflow:auto"
-    >
-      <table
-        style="
-          width:100%;
-          border-collapse:collapse;
-        "
-      >
-        <thead>
-          <tr>
-            <th style="padding:10px;text-align:left">
-              ID
-            </th>
-            <th style="padding:10px;text-align:left">
-              Pelanggan
-            </th>
-            <th style="padding:10px;text-align:left">
-              Kendaraan
-            </th>
-            <th style="padding:10px;text-align:left">
-              Perlindungan
-            </th>
-            <th style="padding:10px;text-align:left">
-              Status
-            </th>
-            <th style="padding:10px;text-align:left">
-              Aksi
-            </th>
-          </tr>
-        </thead>
-
-        <tbody id="insuranceOrdersTable">
-        </tbody>
-
-      </table>
-    </div>
-  </div>
-</div>
-
-
-</section>
-
-<script>
-const ADMIN_EMAIL =
-  "alma.budsteddy88@gmail.com";
-
-const ADMIN_PASSWORD =
-  "123456";
-
-const loginScreen =
-  document.getElementById("loginScreen");
-
-const dashboard =
-  document.getElementById("adminDashboard");
-
-const form =
-  document.getElementById("adminLoginForm");
-
-const error =
-  document.getElementById("loginError");
-
-function showDashboard(){
-  loginScreen.style.display = "none";
-  dashboard.style.display = "block";
-}
-
-function logoutAdmin(){
-  sessionStorage.removeItem(
-    "almamobiiee_admin"
-  );
-
-  location.reload();
-}
-
-form.addEventListener(
-  "submit",
-  function(event){
-
-    event.preventDefault();
-
-    const email =
-      document
-        .getElementById("adminEmail")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-      document
-        .getElementById("adminPassword")
-        .value;
-
-    if(
-      email === ADMIN_EMAIL &&
-      password === ADMIN_PASSWORD
-    ){
-      sessionStorage.setItem(
-        "almamobiiee_admin",
-        "authenticated"
-      );
-
-      error.style.display = "none";
-
-      showDashboard();
-
-      return;
-    }
-
-    error.style.display = "block";
-  }
-);
-
-if(
-  sessionStorage.getItem(
-    "almamobiiee_admin"
-  ) === "authenticated"
-){
-  showDashboard();
-}
-</script>
-
-
-<script>
-function getAlmaInsuranceOrders(){
-  try{
-    return JSON.parse(
-      localStorage.getItem(
-        "alma_insurance_orders"
-      )
-    ) || [];
-  }catch(error){
-    return [];
-  }
-}
-
-function saveAlmaInsuranceOrders(
-  orders
-){
-  localStorage.setItem(
-    "alma_insurance_orders",
-    JSON.stringify(orders)
-  );
-}
-
-function showInsuranceOrders(){
-  const panel =
-    document.getElementById(
-      "insuranceOrdersPanel"
-    );
-
-  if(!panel){
-    return;
-  }
-
-  panel.style.display =
-    "block";
-
-  renderInsuranceOrders();
-
-  panel.scrollIntoView({
-    behavior:"smooth"
-  });
-}
-
-function renderInsuranceOrders(){
-  const table =
-    document.getElementById(
-      "insuranceOrdersTable"
-    );
-
-  if(!table){
-    return;
-  }
-
-  const orders =
-    getAlmaInsuranceOrders();
-
-  if(!orders.length){
-    table.innerHTML =
-      '<tr>' +
-      '<td colspan="6" ' +
-      'style="padding:20px">' +
-      'Belum ada pengajuan asuransi.' +
-      '</td>' +
-      '</tr>';
-
-    return;
-  }
-
-  table.innerHTML =
-    orders.map(
-      function(order){
-
-        return (
-          '<tr>' +
-
-          '<td style="padding:10px">' +
-          order.id +
-          '</td>' +
-
-          '<td style="padding:10px">' +
-          order.customer +
-          '<br><small>' +
-          order.phone +
-          '</small></td>' +
-
-          '<td style="padding:10px">' +
-          order.vehicle +
-          '<br><small>' +
-          order.year +
-          '</small></td>' +
-
-          '<td style="padding:10px">' +
-          order.coverage +
-          '</td>' +
-
-          '<td style="padding:10px">' +
-          order.status +
-          '</td>' +
-
-          '<td style="padding:10px">' +
-
-          '<button ' +
-          'onclick="' +
-          "updateInsuranceStatus('" +
-          order.id +
-          "','Diproses')" +
-          '">' +
-          'Proses' +
-          '</button>' +
-
-          '<button ' +
-          'onclick="' +
-          "updateInsuranceStatus('" +
-          order.id +
-          "','Penawaran Dikirim')" +
-          '">' +
-          'Penawaran' +
-          '</button>' +
-
-          '<button ' +
-          'onclick="' +
-          "updateInsuranceStatus('" +
-          order.id +
-          "','Selesai')" +
-          '">' +
-          'Selesai' +
-          '</button>' +
-
-          '<button ' +
-          'onclick="' +
-          "deleteInsuranceOrder('" +
-          order.id +
-          "')" +
-          '">' +
-          'Hapus' +
-          '</button>' +
-
-          '</td>' +
-
-          '</tr>'
-        );
-      }
-    ).join("");
-}
-
-function updateInsuranceStatus(
-  id,
-  status
-){
-  const orders =
-    getAlmaInsuranceOrders();
-
-  const order =
-    orders.find(
-      function(item){
-        return item.id === id;
-      }
-    );
-
-  if(order){
-    order.status = status;
-
-    saveAlmaInsuranceOrders(
-      orders
-    );
-
-    renderInsuranceOrders();
-  }
-}
-
-function deleteInsuranceOrder(id){
-  if(
-    !confirm(
-      "Hapus pengajuan asuransi ini?"
-    )
-  ){
-    return;
-  }
-
-  const orders =
-    getAlmaInsuranceOrders()
-      .filter(
-        function(item){
-          return item.id !== id;
-        }
-      );
-
-  saveAlmaInsuranceOrders(
-    orders
-  );
-
-  renderInsuranceOrders();
-}
-</script>
-
 </body>
+
 </html>
