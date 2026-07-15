@@ -3,161 +3,394 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Admin Pemilik | almaMobiiee</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}
-header{background:#111827;color:#fff;padding:20px}.container{max-width:1250px;margin:auto;padding:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.card{background:#fff;padding:20px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06);margin-bottom:20px}
-input,select,textarea{width:100%;padding:12px;margin:5px 0 12px;border:1px solid #d1d5db;border-radius:9px}
-button{padding:10px 14px;border:0;border-radius:9px;cursor:pointer;font-weight:700;margin:2px}
-.primary{background:#e30613;color:#fff}.dark{background:#111827;color:#fff}.danger{background:#dc2626;color:#fff}.success{background:#16a34a;color:#fff}
-table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top}
-.table-wrap{overflow:auto}.hidden{display:none!important}.login{max-width:420px;margin:70px auto}.muted{color:#64748b}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+  color:#111827;
+}
+
+.alma-admin-login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.alma-admin-card{
+  width:min(100%,430px);
+  padding:32px;
+  background:#ffffff;
+  border-radius:24px;
+  box-shadow:0 25px 70px rgba(15,23,42,.12);
+}
+
+.alma-admin-logo{
+  width:64px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  border-radius:18px;
+  background:#e30613;
+  color:#ffffff;
+  font-size:28px;
+  font-weight:900;
+}
+
+h1{
+  margin:0 0 8px;
+}
+
+p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+label{
+  display:block;
+  margin-top:16px;
+  margin-bottom:7px;
+  font-weight:700;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d1d5db;
+  border-radius:11px;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:11px;
+  background:#e30613;
+  color:#ffffff;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.alma-error{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  background:#fff1f2;
+  color:#be123c;
+}
+
+.alma-dashboard{
+  display:none;
+  min-height:100vh;
+}
+
+.alma-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 30px;
+  background:#111827;
+  color:#ffffff;
+}
+
+.alma-header h2{
+  margin:0;
+}
+
+.alma-header button{
+  width:auto;
+  margin:0;
+  background:#dc2626;
+}
+
+.alma-content{
+  max-width:1200px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.alma-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.alma-box{
+  padding:24px;
+  border-radius:18px;
+  background:#ffffff;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
+
+.alma-box h3{
+  margin-top:0;
+}
+
+.alma-menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.alma-menu a{
+  display:block;
+  padding:20px;
+  border-radius:16px;
+  background:#ffffff;
+  color:#111827;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
 </style>
 </head>
+
 <body>
 
-<div id="loginScreen" class="login card">
-  <h1>Admin Pemilik</h1>
-  <p class="muted">almaMobiiee Management</p>
-  <input type="password" id="adminPassword" placeholder="Password Admin">
-  <button class="primary" onclick="loginAdmin()">Masuk</button>
-  <p class="muted">Password awal: admin123</p>
-</div>
+<section
+  id="loginScreen"
+  class="alma-admin-login"
+>
+  <div class="alma-admin-card">
 
-<div id="adminApp" class="hidden">
-<header>
-  <h2>almaMobiiee — Admin Pemilik</h2>
-  <button class="danger" onclick="logoutAdmin()">Keluar</button>
-</header>
-
-<div class="container">
-  <div class="grid">
-    <div class="card"><h3>Total Produk</h3><h2 id="totalProducts">0</h2></div>
-    <div class="card"><h3>Pesanan Masuk</h3><h2 id="totalOrders">0</h2></div>
-    <div class="card"><h3>Menunggu Verifikasi</h3><h2 id="waitingOrders">0</h2></div>
-  </div>
-
-  <div class="card">
-    <h2>Input Kendaraan, Aksesori & Promo</h2>
-    <input type="hidden" id="editId">
-    <input id="productName" placeholder="Nama kendaraan / aksesori">
-    <select id="productCategory">
-      <option>Mobil Baru</option>
-      <option>Mobil Second</option>
-      <option>Aksesori</option>
-    </select>
-    <input id="productPrice" type="number" placeholder="Harga">
-    <textarea id="productPromo" placeholder="Promo, bonus atau keterangan"></textarea>
-    <input id="productImage" placeholder="URL gambar">
-    <button class="primary" onclick="saveProduct()">Simpan / Update Langsung</button>
-    <button class="dark" onclick="resetForm()">Reset</button>
-  </div>
-
-  <div class="card">
-    <h2>Produk & Promo</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Kategori</th><th>Produk</th><th>Harga</th><th>Promo</th><th>Aksi</th></tr></thead>
-        <tbody id="productTable"></tbody>
-      </table>
+    <div class="alma-admin-logo">
+      A
     </div>
-  </div>
 
-  <div class="card">
-    <h2>Pesanan Masuk & Riwayat</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>ID</th><th>Pelanggan</th><th>Produk</th><th>Pembayaran</th><th>Status</th><th>Aksi</th></tr></thead>
-        <tbody id="orderTable"></tbody>
-      </table>
-    </div>
+    <h1>
+      Admin Pemilik
+    </h1>
+
+    <p>
+      Login khusus pemilik almaMobiiee.
+    </p>
+
+    <form id="adminLoginForm">
+
+      <label for="adminEmail">
+        Email
+      </label>
+
+      <input
+        id="adminEmail"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="adminPassword">
+        Password
+      </label>
+
+      <input
+        id="adminPassword"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="submit">
+        Masuk Admin
+      </button>
+
+      <div
+        id="loginError"
+        class="alma-error"
+      >
+        Email atau password tidak sesuai.
+      </div>
+
+    </form>
+
   </div>
-</div>
-</div>
+</section>
+
+<section
+  id="adminDashboard"
+  class="alma-dashboard"
+>
+
+  <header class="alma-header">
+
+    <div>
+      <strong>
+        almaMobiiee
+      </strong>
+      <h2>
+        Admin Pemilik
+      </h2>
+    </div>
+
+    <button onclick="logoutAdmin()">
+      Keluar
+    </button>
+
+  </header>
+
+  <main class="alma-content">
+
+    <div class="alma-grid">
+
+      <div class="alma-box">
+        <h3>Mobil Baru</h3>
+        <p>
+          Kelola kendaraan baru.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Mobil Second</h3>
+        <p>
+          Kelola unit kendaraan second.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Accessories</h3>
+        <p>
+          Kelola produk accessories mobil.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Promo</h3>
+        <p>
+          Update promo yang tampil di website.
+        </p>
+      </div>
+
+      <div class="alma-box">
+        <h3>Pesanan</h3>
+        <p>
+          Lihat pesanan pelanggan.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="alma-menu">
+
+      <a href="../">
+        ← Kembali ke Website
+      </a>
+
+      <a href="../#mobil">
+        Kelola Mobil
+      </a>
+
+      <a href="../#mobil-second">
+        Kelola Mobil Second
+      </a>
+
+      <a href="../#accessories">
+        Kelola Accessories
+      </a>
+
+      <a href="../#promo">
+        Kelola Promo
+      </a>
+
+    </div>
+
+  </main>
+
+</section>
 
 <script>
-const DB={get(k,d=[]){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
-const rp=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
+const ADMIN_EMAIL =
+  "alma.budsteddy88@gmail.com";
 
-function loginAdmin(){
-  if(document.getElementById("adminPassword").value!=="admin123"){alert("Password salah");return}
-  sessionStorage.setItem("alma_admin","true");showAdmin()
-}
-function logoutAdmin(){sessionStorage.removeItem("alma_admin");location.reload()}
-function showAdmin(){loginScreen.classList.add("hidden");adminApp.classList.remove("hidden");render()}
-function resetForm(){editId.value="";productName.value="";productPrice.value="";productPromo.value="";productImage.value=""}
+const ADMIN_PASSWORD =
+  "123456";
 
-function saveProduct(){
-  if(!productName.value.trim()){alert("Nama wajib diisi");return}
-  let products=DB.get("alma_products",[]);
-  const data={
-    id:editId.value||"PRD-"+Date.now(),
-    name:productName.value.trim(),
-    category:productCategory.value,
-    price:Number(productPrice.value),
-    promo:productPromo.value,
-    image:productImage.value,
-    active:true
-  };
-  const i=products.findIndex(p=>p.id===data.id);
-  if(i>=0)products[i]=data;else products.unshift(data);
-  DB.set("alma_products",products);resetForm();render();alert("Data berhasil disimpan")
+const loginScreen =
+  document.getElementById("loginScreen");
+
+const dashboard =
+  document.getElementById("adminDashboard");
+
+const form =
+  document.getElementById("adminLoginForm");
+
+const error =
+  document.getElementById("loginError");
+
+function showDashboard(){
+  loginScreen.style.display = "none";
+  dashboard.style.display = "block";
 }
 
-function editProduct(id){
-  const p=DB.get("alma_products",[]).find(x=>x.id===id);if(!p)return;
-  editId.value=p.id;productName.value=p.name;productCategory.value=p.category;productPrice.value=p.price;productPromo.value=p.promo||"";productImage.value=p.image||"";
-  window.scrollTo({top:0,behavior:"smooth"})
+function logoutAdmin(){
+  sessionStorage.removeItem(
+    "almamobiiee_admin"
+  );
+
+  location.reload();
 }
 
-function deleteProduct(id){
-  if(!confirm("Hapus data ini?"))return;
-  DB.set("alma_products",DB.get("alma_products",[]).filter(p=>p.id!==id));render()
+form.addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+    const email =
+      document
+        .getElementById("adminEmail")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const password =
+      document
+        .getElementById("adminPassword")
+        .value;
+
+    if(
+      email === ADMIN_EMAIL &&
+      password === ADMIN_PASSWORD
+    ){
+      sessionStorage.setItem(
+        "almamobiiee_admin",
+        "authenticated"
+      );
+
+      error.style.display = "none";
+
+      showDashboard();
+
+      return;
+    }
+
+    error.style.display = "block";
+  }
+);
+
+if(
+  sessionStorage.getItem(
+    "almamobiiee_admin"
+  ) === "authenticated"
+){
+  showDashboard();
 }
-
-function updateOrder(id,status){
-  const orders=DB.get("alma_orders",[]);
-  const o=orders.find(x=>x.id===id);if(o)o.status=status;
-  DB.set("alma_orders",orders);render()
-}
-
-function deleteOrder(id){
-  if(!confirm("Hapus pesanan ini?"))return;
-  DB.set("alma_orders",DB.get("alma_orders",[]).filter(o=>o.id!==id));render()
-}
-
-function render(){
-  const products=DB.get("alma_products",[]);
-  const orders=DB.get("alma_orders",[]);
-  totalProducts.textContent=products.length;
-  totalOrders.textContent=orders.length;
-  waitingOrders.textContent=orders.filter(o=>o.status==="Menunggu Verifikasi").length;
-
-  productTable.innerHTML=products.map(p=>`
-    <tr>
-      <td>${p.category}</td><td>${p.name}</td><td>${rp(p.price)}</td><td>${p.promo||"-"}</td>
-      <td><button class="dark" onclick="editProduct('${p.id}')">Edit</button><button class="danger" onclick="deleteProduct('${p.id}')">Hapus</button></td>
-    </tr>`).join("");
-
-  orderTable.innerHTML=orders.map(o=>`
-    <tr>
-      <td>${o.id}</td>
-      <td>${o.customer}<br><span class="muted">${o.phone||""}<br>${o.email||""}</span></td>
-      <td>${o.product}<br>${rp(o.amount)}</td>
-      <td>${o.payment}</td>
-      <td>${o.status}</td>
-      <td>
-        <button class="success" onclick="updateOrder('${o.id}','Pembayaran Terverifikasi')">Verifikasi</button>
-        <button class="dark" onclick="updateOrder('${o.id}','Diproses')">Proses</button>
-        <button class="primary" onclick="updateOrder('${o.id}','Selesai')">Selesai</button>
-        <button class="danger" onclick="deleteOrder('${o.id}')">Hapus</button>
-      </td>
-    </tr>`).join("");
-}
-
-if(sessionStorage.getItem("alma_admin")==="true")showAdmin();
 </script>
+
 </body>
 </html>

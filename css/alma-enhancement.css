@@ -1,0 +1,120 @@
+.alma-extra-nav-link{
+  white-space:nowrap;
+}
+
+.alma-sms-button{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:99990;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 19px;
+  border:0;
+  border-radius:999px;
+  background:#e30613;
+  color:#ffffff;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 12px 32px rgba(227,6,19,.28);
+}
+
+.alma-sms-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.72);
+}
+
+.alma-sms-modal.active{
+  display:flex;
+}
+
+.alma-sms-card{
+  position:relative;
+  width:min(100%,440px);
+  padding:30px;
+  border-radius:24px;
+  background:#ffffff;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.3);
+}
+
+.alma-sms-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.alma-sms-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:68px;
+  height:68px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:#e30613;
+  color:#ffffff;
+  font-size:30px;
+}
+
+.alma-sms-card h2{
+  margin:0 0 10px;
+  color:#111827;
+}
+
+.alma-sms-card p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+.alma-sms-number{
+  margin:18px 0;
+  padding:14px;
+  border-radius:14px;
+  background:#f8fafc;
+  font-size:20px;
+  font-weight:800;
+}
+
+.alma-sms-action{
+  display:block;
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#e30613;
+  color:#ffffff !important;
+  text-decoration:none;
+  font-weight:800;
+}
+
+.alma-sms-cancel{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#f1f5f9;
+  font-weight:700;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+  .alma-sms-button{
+    right:14px;
+    bottom:14px;
+  }
+}
