@@ -355,7 +355,7 @@ Proses cepat, aman, terpercaya.
 
 <a
 
-href="https://wa.me/6285283397198?text=Halo%20Alma,%20saya%20ingin%20bertanya%20tentang%20mobil%20Toyota"
+href="sms:085283397198?body=Halo%20Alma%2C%20saya%20menghubungi%20dari%20website%20almaMobiiee."
 
 target="_blank"
 
@@ -1110,7 +1110,7 @@ ${catatan.value}`;
 
 window.open(
 
-"https://wa.me/6285283397198?text="
+"sms:085283397198?body=Halo%20Alma%2C%20saya%20menghubungi%20dari%20website%20almaMobiiee."
 
 +encodeURIComponent(pesan)
 
@@ -1600,7 +1600,7 @@ alma.budsteddy88@gmail.com
 
 <a
 
-href="https://wa.me/6285283397198"
+href="sms:085283397198?body=Halo%20Alma%2C%20saya%20menghubungi%20dari%20website%20almaMobiiee."
 
 target="_blank"
 
@@ -1802,7 +1802,7 @@ FLOATING WHATSAPP
 
 <a
 
-href="https://wa.me/6285283397198?text=Halo%20Alma,%20saya%20ingin%20bertanya%20tentang%20Toyota"
+href="sms:085283397198?body=Halo%20Alma%2C%20saya%20menghubungi%20dari%20website%20almaMobiiee."
 
 target="_blank"
 
@@ -2127,7 +2127,7 @@ if(confirm(
 
 window.open(
 
-"https://wa.me/6285283397198?text=Halo%20Alma,%20saya%20ingin%20konsultasi%20Toyota"
+"sms:085283397198?body=Halo%20Alma%2C%20saya%20menghubungi%20dari%20website%20almaMobiiee."
 
 );
 
@@ -2207,6 +2207,81 @@ window.open(
 <script src="js/commerce.js"></script>
 
 <!-- ALMAMOBIIEE_COMMERCE_END -->
+<!-- ALMA_SMS_POPUP_START -->
+<link rel="stylesheet" href="css/alma-sms-popup.css">
+
+<div
+  id="almaSMSOverlay"
+  class="alma-sms-overlay"
+  aria-hidden="true"
+>
+  <div
+    class="alma-sms-popup"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="almaSMSTitle"
+  >
+    <button
+      class="alma-sms-close"
+      type="button"
+      onclick="closeAlmaSMSPopup()"
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
+    <div class="alma-sms-icon">
+      ✉
+    </div>
+
+    <h2 id="almaSMSTitle">
+      Hubungi Alma via SMS
+    </h2>
+
+    <p>
+      WhatsApp sedang mengalami kendala.
+      Untuk informasi kendaraan, promo,
+      aksesori, dan pemesanan, silakan
+      hubungi Alma melalui SMS.
+    </p>
+
+    <div class="alma-sms-number">
+      085283397198
+    </div>
+
+    <a
+      id="almaSMSLink"
+      class="alma-sms-btn"
+      href="sms:085283397198?body=Halo%20Alma%2C%20saya%20tertarik%20dengan%20informasi%20di%20almaMobiiee."
+    >
+      Kirim SMS ke Alma
+    </a>
+
+    <button
+      class="alma-sms-btn alma-sms-btn-secondary"
+      type="button"
+      onclick="closeAlmaSMSPopup()"
+    >
+      Lanjut Lihat Website
+    </button>
+
+    <div class="alma-sms-note">
+      SMS akan dibuka melalui aplikasi pesan di perangkat Anda.
+    </div>
+  </div>
+</div>
+
+<button
+  class="alma-sms-floating"
+  type="button"
+  onclick="openAlmaSMSPopup()"
+>
+  ✉ SMS Alma
+</button>
+
+<script src="js/alma-sms-popup.js"></script>
+
+<!-- ALMA_SMS_POPUP_END -->
 </body>
 
 </html>

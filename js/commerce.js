@@ -77,9 +77,23 @@ function almaSubmitOrder(e){
   const orders=AlmaDB.get("alma_orders",[]);
   orders.unshift(order);
   AlmaDB.set("alma_orders",orders);
-  alert("Pesanan berhasil dibuat.\nID Pesanan: "+order.id+"\nStatus: Menunggu Verifikasi");
+  const smsMessage =
+    "Halo Alma, saya sudah membuat pesanan di almaMobiiee. " +
+    "ID Pesanan: " + order.id +
+    ". Produk: " + order.product +
+    ". Nama: " + order.customer +
+    ". Mohon informasi selanjutnya.";
+
   e.target.reset();
   almaCloseOrder();
+
+  if(typeof openAlmaSMSPopup === "function"){
+    openAlmaSMSPopup(smsMessage);
+  }else{
+    window.location.href =
+      "sms:085283397198?body=" +
+      encodeURIComponent(smsMessage);
+  }
 }
 
 document.addEventListener("DOMContentLoaded",()=>{almaSeed();almaRender()});
