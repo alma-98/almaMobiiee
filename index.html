@@ -1773,6 +1773,381 @@ Senin - Minggu
 FOOTER
 ====================================== -->
 
+
+<!-- ALMAMOBIIEE_COMMERCE_START -->
+<link rel="stylesheet" href="css/commerce.css">
+
+<section class="alma-commerce" id="produk">
+  <div class="alma-container">
+    <h2>Mobil, Aksesori & Promo almaMobiiee</h2>
+    <p class="alma-commerce-subtitle">Pesan kendaraan baru, mobil second dan aksesori mobil.</p>
+
+    <div class="alma-tabs">
+      <button class="active" onclick="almaSetFilter('Semua',this)">Semua</button>
+      <button onclick="almaSetFilter('Mobil Baru',this)">Mobil Baru</button>
+      <button onclick="almaSetFilter('Mobil Second',this)">Mobil Second</button>
+      <button onclick="almaSetFilter('Aksesori',this)">Aksesori</button>
+    </div>
+
+    <div id="almaProductGrid" class="alma-grid"></div>
+  </div>
+</section>
+
+<div id="almaOrderModal" class="alma-modal">
+  <div class="alma-modal-box">
+    <button onclick="almaCloseOrder()" style="float:right;border:0;background:none;font-size:24px;cursor:pointer">×</button>
+    <h2>Form Pemesanan</h2>
+
+    <form onsubmit="almaSubmitOrder(event)">
+      <input type="hidden" id="almaOrderProductId">
+      <input type="hidden" id="almaOrderAmount">
+
+      <label>Produk</label>
+      <input class="alma-input" id="almaOrderProduct" readonly>
+
+      <label>Nama Lengkap</label>
+      <input class="alma-input" id="almaCustomerName" required>
+
+      <label>Nomor HP</label>
+      <input class="alma-input" id="almaCustomerPhone" required>
+
+      <label>Email</label>
+      <input class="alma-input" id="almaCustomerEmail" type="email">
+
+      <label>Alamat</label>
+      <textarea class="alma-input" id="almaCustomerAddress"></textarea>
+
+      <label>Metode Pembayaran</label>
+      <select class="alma-input" id="almaPaymentMethod">
+        <option value="QRIS">QRIS</option>
+        <option value="Transfer Rekening Alma 1670003828281">Transfer Rekening Alma — 1670003828281</option>
+      </select>
+
+      <div class="alma-payment-box">
+        <strong>Total: <span id="almaOrderTotal">Rp0</span></strong>
+        <img class="alma-qris" src="assets/images/qris-almamobiiee.png" alt="QRIS almaMobiiee">
+        <p><strong>Transfer Rekening Alma</strong><br>1670003828281</p>
+        <small>Pembayaran akan diverifikasi oleh Admin Pemilik.</small>
+      </div>
+
+      <label>Catatan Pesanan</label>
+      <textarea class="alma-input" id="almaCustomerNote"></textarea>
+
+      <button class="alma-btn alma-btn-primary" type="submit">Buat Pesanan</button>
+    </form>
+  </div>
+</div>
+
+<a class="alma-admin-link" href="admin/">Admin Pemilik</a>
+<script src="js/commerce.js"></script>
+
+<!-- ALMAMOBIIEE_COMMERCE_END -->
+
+<!-- ALMA_INSURANCE_START -->
+<section
+  id="asuransi"
+  class="alma-insurance"
+>
+  <div class="alma-insurance-container">
+
+    <div class="alma-insurance-header">
+
+      <span class="alma-insurance-label">
+        ASURANSI KENDARAAN
+      </span>
+
+      <h2>
+        Ajukan Perlindungan untuk Kendaraan Anda
+      </h2>
+
+      <p>
+        Isi data kendaraan untuk mendapatkan informasi
+        dan penawaran perlindungan asuransi yang sesuai.
+      </p>
+
+    </div>
+
+    <div class="alma-insurance-layout">
+
+      <div class="alma-insurance-info">
+
+        <h3>
+          Pilihan Perlindungan
+        </h3>
+
+        <div class="alma-insurance-benefit">
+
+          <div class="alma-insurance-icon">
+            🛡️
+          </div>
+
+          <div>
+            <strong>
+              Comprehensive / All Risk
+            </strong>
+
+            <p>
+              Ajukan informasi perlindungan kendaraan
+              untuk berbagai risiko sesuai syarat
+              dan ketentuan polis.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="alma-insurance-benefit">
+
+          <div class="alma-insurance-icon">
+            🚗
+          </div>
+
+          <div>
+            <strong>
+              Total Loss Only / TLO
+            </strong>
+
+            <p>
+              Pilihan perlindungan untuk risiko
+              kehilangan atau kerusakan sesuai
+              ketentuan polis.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="alma-insurance-benefit">
+
+          <div class="alma-insurance-icon">
+            ✉️
+          </div>
+
+          <div>
+            <strong>
+              Konsultasi via SMS
+            </strong>
+
+            <p>
+              Setelah formulir dikirim,
+              Anda dapat melanjutkan komunikasi
+              dengan Alma melalui SMS.
+            </p>
+          </div>
+
+        </div>
+
+        <p class="alma-insurance-note">
+          almaMobiiee membantu meneruskan permintaan
+          informasi atau pengajuan. Persetujuan,
+          premi, manfaat, pengecualian, dan penerbitan
+          polis mengikuti ketentuan penyedia asuransi
+          yang menangani pengajuan.
+        </p>
+
+      </div>
+
+      <div class="alma-insurance-form-card">
+
+        <h3>
+          Form Pengajuan Asuransi
+        </h3>
+
+        <form
+          id="almaInsuranceForm"
+          onsubmit="almaSubmitInsurance(event)"
+        >
+
+          <div class="alma-insurance-grid">
+
+            <div class="alma-insurance-field">
+              <label for="insuranceName">
+                Nama Lengkap
+              </label>
+
+              <input
+                id="insuranceName"
+                type="text"
+                required
+              >
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insurancePhone">
+                Nomor HP
+              </label>
+
+              <input
+                id="insurancePhone"
+                type="tel"
+                required
+              >
+            </div>
+
+            <div class="alma-insurance-field full">
+              <label for="insuranceEmail">
+                Email
+              </label>
+
+              <input
+                id="insuranceEmail"
+                type="email"
+              >
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insuranceVehicleType">
+                Jenis Kendaraan
+              </label>
+
+              <select
+                id="insuranceVehicleType"
+                required
+              >
+                <option value="">
+                  Pilih
+                </option>
+
+                <option value="Mobil Baru">
+                  Mobil Baru
+                </option>
+
+                <option value="Mobil Second">
+                  Mobil Second
+                </option>
+
+                <option value="Kendaraan Pribadi">
+                  Kendaraan Pribadi
+                </option>
+
+                <option value="Kendaraan Operasional">
+                  Kendaraan Operasional
+                </option>
+              </select>
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insuranceYear">
+                Tahun Kendaraan
+              </label>
+
+              <input
+                id="insuranceYear"
+                type="number"
+                min="1980"
+                max="2035"
+                required
+              >
+            </div>
+
+            <div class="alma-insurance-field full">
+              <label for="insuranceVehicle">
+                Merek & Model Kendaraan
+              </label>
+
+              <input
+                id="insuranceVehicle"
+                type="text"
+                placeholder="Contoh: Toyota Yaris Cross"
+                required
+              >
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insurancePlate">
+                Nomor Polisi
+              </label>
+
+              <input
+                id="insurancePlate"
+                type="text"
+                placeholder="Opsional"
+              >
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insuranceValue">
+                Perkiraan Nilai Kendaraan
+              </label>
+
+              <input
+                id="insuranceValue"
+                type="text"
+                placeholder="Contoh: Rp350.000.000"
+              >
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insuranceCoverage">
+                Jenis Perlindungan
+              </label>
+
+              <select
+                id="insuranceCoverage"
+                required
+              >
+                <option value="">
+                  Pilih
+                </option>
+
+                <option value="Comprehensive / All Risk">
+                  Comprehensive / All Risk
+                </option>
+
+                <option value="Total Loss Only / TLO">
+                  Total Loss Only / TLO
+                </option>
+
+                <option value="Belum Tahu - Minta Rekomendasi">
+                  Belum Tahu - Minta Rekomendasi
+                </option>
+              </select>
+            </div>
+
+            <div class="alma-insurance-field">
+              <label for="insuranceArea">
+                Wilayah Penggunaan
+              </label>
+
+              <input
+                id="insuranceArea"
+                type="text"
+                placeholder="Contoh: Jabodetabek"
+                required
+              >
+            </div>
+
+            <div class="alma-insurance-field full">
+              <label for="insuranceNote">
+                Catatan
+              </label>
+
+              <textarea
+                id="insuranceNote"
+                placeholder="Tuliskan kebutuhan atau pertanyaan Anda"
+              ></textarea>
+            </div>
+
+          </div>
+
+          <button
+            class="alma-insurance-submit"
+            type="submit"
+          >
+            Ajukan & Lanjut via SMS
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script src="js/alma-insurance.js"></script>
+
+<!-- ALMA_INSURANCE_END -->
+
 <footer>
 
 <div class="container text-center">
@@ -2146,76 +2521,6 @@ window.open(
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
-<!-- ALMAMOBIIEE_COMMERCE_START -->
-<link rel="stylesheet" href="css/commerce.css">
-
-<section class="alma-commerce" id="produk">
-  <div class="alma-container">
-    <h2>Mobil, Aksesori & Promo almaMobiiee</h2>
-    <p class="alma-commerce-subtitle">Pesan kendaraan baru, mobil second dan aksesori mobil.</p>
-
-    <div class="alma-tabs">
-      <button class="active" onclick="almaSetFilter('Semua',this)">Semua</button>
-      <button onclick="almaSetFilter('Mobil Baru',this)">Mobil Baru</button>
-      <button onclick="almaSetFilter('Mobil Second',this)">Mobil Second</button>
-      <button onclick="almaSetFilter('Aksesori',this)">Aksesori</button>
-    </div>
-
-    <div id="almaProductGrid" class="alma-grid"></div>
-  </div>
-</section>
-
-<div id="almaOrderModal" class="alma-modal">
-  <div class="alma-modal-box">
-    <button onclick="almaCloseOrder()" style="float:right;border:0;background:none;font-size:24px;cursor:pointer">×</button>
-    <h2>Form Pemesanan</h2>
-
-    <form onsubmit="almaSubmitOrder(event)">
-      <input type="hidden" id="almaOrderProductId">
-      <input type="hidden" id="almaOrderAmount">
-
-      <label>Produk</label>
-      <input class="alma-input" id="almaOrderProduct" readonly>
-
-      <label>Nama Lengkap</label>
-      <input class="alma-input" id="almaCustomerName" required>
-
-      <label>Nomor HP</label>
-      <input class="alma-input" id="almaCustomerPhone" required>
-
-      <label>Email</label>
-      <input class="alma-input" id="almaCustomerEmail" type="email">
-
-      <label>Alamat</label>
-      <textarea class="alma-input" id="almaCustomerAddress"></textarea>
-
-      <label>Metode Pembayaran</label>
-      <select class="alma-input" id="almaPaymentMethod">
-        <option value="QRIS">QRIS</option>
-        <option value="Transfer Rekening Alma 1670003828281">Transfer Rekening Alma — 1670003828281</option>
-      </select>
-
-      <div class="alma-payment-box">
-        <strong>Total: <span id="almaOrderTotal">Rp0</span></strong>
-        <img class="alma-qris" src="assets/images/qris-almamobiiee.png" alt="QRIS almaMobiiee">
-        <p><strong>Transfer Rekening Alma</strong><br>1670003828281</p>
-        <small>Pembayaran akan diverifikasi oleh Admin Pemilik.</small>
-      </div>
-
-      <label>Catatan Pesanan</label>
-      <textarea class="alma-input" id="almaCustomerNote"></textarea>
-
-      <button class="alma-btn alma-btn-primary" type="submit">Buat Pesanan</button>
-    </form>
-  </div>
-</div>
-
-<a class="alma-admin-link" href="admin/">Admin Pemilik</a>
-<script src="js/commerce.js"></script>
-
-<!-- ALMAMOBIIEE_COMMERCE_END -->
-
-
 
 
 <!-- ALMA_SMS_START -->
@@ -2290,310 +2595,7 @@ window.open(
 
 <!-- ALMA_SMS_END -->
 
-<!-- ALMA_INSURANCE_START -->
-<section
-  id="asuransi"
-  class="alma-insurance"
->
-  <div class="alma-insurance-container">
 
-    <div class="alma-insurance-header">
-
-      <span class="alma-insurance-label">
-        ASURANSI KENDARAAN
-      </span>
-
-      <h2>
-        Ajukan Perlindungan untuk Kendaraan Anda
-      </h2>
-
-      <p>
-        Isi data kendaraan untuk mendapatkan informasi
-        dan penawaran perlindungan asuransi yang sesuai.
-      </p>
-
-    </div>
-
-    <div class="alma-insurance-layout">
-
-      <div class="alma-insurance-info">
-
-        <h3>
-          Pilihan Perlindungan
-        </h3>
-
-        <div class="alma-insurance-benefit">
-
-          <div class="alma-insurance-icon">
-            🛡️
-          </div>
-
-          <div>
-            <strong>
-              Comprehensive / All Risk
-            </strong>
-
-            <p>
-              Ajukan informasi perlindungan kendaraan
-              untuk berbagai risiko sesuai syarat
-              dan ketentuan polis.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="alma-insurance-benefit">
-
-          <div class="alma-insurance-icon">
-            🚗
-          </div>
-
-          <div>
-            <strong>
-              Total Loss Only / TLO
-            </strong>
-
-            <p>
-              Pilihan perlindungan untuk risiko
-              kehilangan atau kerusakan sesuai
-              ketentuan polis.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="alma-insurance-benefit">
-
-          <div class="alma-insurance-icon">
-            ✉️
-          </div>
-
-          <div>
-            <strong>
-              Konsultasi via SMS
-            </strong>
-
-            <p>
-              Setelah formulir dikirim,
-              Anda dapat melanjutkan komunikasi
-              dengan Alma melalui SMS.
-            </p>
-          </div>
-
-        </div>
-
-        <p class="alma-insurance-note">
-          almaMobiiee membantu meneruskan permintaan
-          informasi atau pengajuan. Persetujuan,
-          premi, manfaat, pengecualian, dan penerbitan
-          polis mengikuti ketentuan penyedia asuransi
-          yang menangani pengajuan.
-        </p>
-
-      </div>
-
-      <div class="alma-insurance-form-card">
-
-        <h3>
-          Form Pengajuan Asuransi
-        </h3>
-
-        <form
-          id="almaInsuranceForm"
-          onsubmit="almaSubmitInsurance(event)"
-        >
-
-          <div class="alma-insurance-grid">
-
-            <div class="alma-insurance-field">
-              <label for="insuranceName">
-                Nama Lengkap
-              </label>
-
-              <input
-                id="insuranceName"
-                type="text"
-                required
-              >
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insurancePhone">
-                Nomor HP
-              </label>
-
-              <input
-                id="insurancePhone"
-                type="tel"
-                required
-              >
-            </div>
-
-            <div class="alma-insurance-field full">
-              <label for="insuranceEmail">
-                Email
-              </label>
-
-              <input
-                id="insuranceEmail"
-                type="email"
-              >
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insuranceVehicleType">
-                Jenis Kendaraan
-              </label>
-
-              <select
-                id="insuranceVehicleType"
-                required
-              >
-                <option value="">
-                  Pilih
-                </option>
-
-                <option value="Mobil Baru">
-                  Mobil Baru
-                </option>
-
-                <option value="Mobil Second">
-                  Mobil Second
-                </option>
-
-                <option value="Kendaraan Pribadi">
-                  Kendaraan Pribadi
-                </option>
-
-                <option value="Kendaraan Operasional">
-                  Kendaraan Operasional
-                </option>
-              </select>
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insuranceYear">
-                Tahun Kendaraan
-              </label>
-
-              <input
-                id="insuranceYear"
-                type="number"
-                min="1980"
-                max="2035"
-                required
-              >
-            </div>
-
-            <div class="alma-insurance-field full">
-              <label for="insuranceVehicle">
-                Merek & Model Kendaraan
-              </label>
-
-              <input
-                id="insuranceVehicle"
-                type="text"
-                placeholder="Contoh: Toyota Yaris Cross"
-                required
-              >
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insurancePlate">
-                Nomor Polisi
-              </label>
-
-              <input
-                id="insurancePlate"
-                type="text"
-                placeholder="Opsional"
-              >
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insuranceValue">
-                Perkiraan Nilai Kendaraan
-              </label>
-
-              <input
-                id="insuranceValue"
-                type="text"
-                placeholder="Contoh: Rp350.000.000"
-              >
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insuranceCoverage">
-                Jenis Perlindungan
-              </label>
-
-              <select
-                id="insuranceCoverage"
-                required
-              >
-                <option value="">
-                  Pilih
-                </option>
-
-                <option value="Comprehensive / All Risk">
-                  Comprehensive / All Risk
-                </option>
-
-                <option value="Total Loss Only / TLO">
-                  Total Loss Only / TLO
-                </option>
-
-                <option value="Belum Tahu - Minta Rekomendasi">
-                  Belum Tahu - Minta Rekomendasi
-                </option>
-              </select>
-            </div>
-
-            <div class="alma-insurance-field">
-              <label for="insuranceArea">
-                Wilayah Penggunaan
-              </label>
-
-              <input
-                id="insuranceArea"
-                type="text"
-                placeholder="Contoh: Jabodetabek"
-                required
-              >
-            </div>
-
-            <div class="alma-insurance-field full">
-              <label for="insuranceNote">
-                Catatan
-              </label>
-
-              <textarea
-                id="insuranceNote"
-                placeholder="Tuliskan kebutuhan atau pertanyaan Anda"
-              ></textarea>
-            </div>
-
-          </div>
-
-          <button
-            class="alma-insurance-submit"
-            type="submit"
-          >
-            Ajukan & Lanjut via SMS
-          </button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<script src="js/alma-insurance.js"></script>
-
-<!-- ALMA_INSURANCE_END -->
 </body>
 
 </html>
