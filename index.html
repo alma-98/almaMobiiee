@@ -884,40 +884,45 @@
 
 
       
+
 <form
-  class="premium-form alma-used-car-form"
+  class="premium-form alma-used-car-clean"
   id="usedCarForm"
 >
 
-  <div class="alma-used-car-form-header">
+  <div class="alma-used-car-clean-head">
 
-    <span class="alma-used-car-form-label">
-      Pendaftaran Kendaraan
+    <span class="alma-used-car-clean-icon">
+      🚘
     </span>
 
-    <h3>
-      Data Mobil Second
-    </h3>
+    <div>
+      <span class="alma-used-car-clean-eyebrow">
+        Mobil Second
+      </span>
 
-    <p>
-      Isi data kendaraan dengan lengkap.
-      Data akan diperiksa terlebih dahulu oleh Admin Alma
-      sebelum kendaraan diproses lebih lanjut.
-    </p>
+      <h3>
+        Jual Mobil Anda
+      </h3>
+
+      <p>
+        Isi data kendaraan untuk proses review oleh Admin Alma.
+      </p>
+    </div>
 
   </div>
 
 
-  <div class="two-column-form alma-used-car-fields">
+  <div class="alma-used-car-clean-grid">
 
     <label>
-      Nama Pemilik
+      <span>Nama Pemilik</span>
 
       <input
         type="text"
         id="sellerName"
         name="ownerName"
-        placeholder="Nama lengkap pemilik kendaraan"
+        placeholder="Nama lengkap"
         autocomplete="name"
         required
       >
@@ -925,13 +930,13 @@
 
 
     <label>
-      Nomor HP
+      <span>Nomor HP</span>
 
       <input
         type="tel"
         id="sellerPhone"
         name="phone"
-        placeholder="Contoh: 081234567890"
+        placeholder="08xxxxxxxxxx"
         autocomplete="tel"
         required
       >
@@ -939,7 +944,7 @@
 
 
     <label>
-      Merek & Tipe Mobil
+      <span>Merek & Tipe Mobil</span>
 
       <input
         type="text"
@@ -952,13 +957,13 @@
 
 
     <label>
-      Tahun Kendaraan
+      <span>Tahun</span>
 
       <input
         type="number"
         id="sellerYear"
         name="year"
-        placeholder="Contoh: 2022"
+        placeholder="2022"
         min="1980"
         max="2030"
         required
@@ -966,44 +971,50 @@
     </label>
 
 
-    <label class="alma-used-car-full">
-      Harga Penawaran
+    <label class="alma-used-car-wide">
+      <span>Harga Penawaran</span>
 
-      <input
-        type="number"
-        id="sellerPrice"
-        name="price"
-        placeholder="Contoh: 250000000"
-        min="1"
-        inputmode="numeric"
-        required
-      >
+      <div class="alma-price-input">
+        <strong>Rp</strong>
 
-      <small class="alma-field-help">
-        Masukkan harga kendaraan dalam Rupiah tanpa titik atau koma.
+        <input
+          type="number"
+          id="sellerPrice"
+          name="price"
+          placeholder="250000000"
+          min="1"
+          inputmode="numeric"
+          required
+        >
+      </div>
+
+      <small>
+        Masukkan nominal tanpa titik atau koma.
       </small>
     </label>
 
 
-    <label class="alma-used-car-full">
-      Foto Kendaraan
+    <label class="alma-used-car-wide">
+      <span>Foto Kendaraan</span>
 
-      <input
-        type="file"
-        id="sellerImage"
-        name="image"
-        accept="image/jpeg,image/png,image/webp"
-      >
+      <div class="alma-used-car-upload">
+        <input
+          type="file"
+          id="sellerImage"
+          name="image"
+          accept="image/jpeg,image/png,image/webp"
+        >
 
-      <small class="alma-field-help">
-        Upload foto utama kendaraan agar proses review lebih mudah.
-      </small>
+        <small>
+          Format JPG, PNG, atau WebP.
+        </small>
+      </div>
     </label>
 
 
     <div
       id="sellerImagePreview"
-      class="alma-used-car-image-preview"
+      class="alma-used-car-clean-preview"
       hidden
     >
       <img
@@ -1013,37 +1024,41 @@
     </div>
 
 
-    <label class="alma-used-car-full">
-      Kondisi / Catatan Kendaraan
+    <label class="alma-used-car-wide">
+      <span>Kondisi / Catatan Kendaraan</span>
 
       <textarea
         id="sellerNotes"
         name="notes"
-        rows="5"
-        placeholder="Contoh: Pajak hidup, servis rutin, pemakaian pribadi, kondisi interior dan eksterior..."
+        rows="4"
+        placeholder="Ceritakan kondisi kendaraan, pajak, servis, dan informasi penting lainnya..."
       ></textarea>
     </label>
 
   </div>
 
 
-  <div class="alma-used-car-submit-area">
+  <div class="alma-used-car-clean-footer">
+
+    <div class="alma-used-car-review-note">
+      <span>✓</span>
+
+      <p>
+        Data kendaraan akan diperiksa terlebih dahulu sebelum diproses.
+      </p>
+    </div>
 
     <button
       type="submit"
-      class="alma-used-car-submit"
+      class="alma-used-car-clean-submit"
     >
       Kirim untuk Review
     </button>
 
-    <p>
-      Pengiriman formulir tidak memerlukan pembayaran.
-      Admin Alma akan melakukan review terhadap data kendaraan.
-    </p>
-
   </div>
 
 </form>
+
 
 
     </div>

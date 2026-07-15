@@ -395,3 +395,282 @@
   }
 }
 
+
+
+/* ==========================================================
+   USED CAR - CONSISTENT ALMAMOBIIEE TEMPLATE V2
+========================================================== */
+
+.alma-used-car-clean{
+  width:min(100%,900px);
+  margin:28px auto 0;
+  padding:0 !important;
+  overflow:hidden;
+  border:1px solid #e5e7eb !important;
+  border-radius:22px !important;
+  background:#ffffff !important;
+  box-shadow:0 18px 55px rgba(15,23,42,.08) !important;
+}
+
+.alma-used-car-clean-head{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:24px 26px;
+  border-bottom:1px solid #eef2f7;
+  background:#ffffff;
+}
+
+.alma-used-car-clean-icon{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:#fff1f2;
+  font-size:26px;
+}
+
+.alma-used-car-clean-eyebrow{
+  display:block;
+  margin-bottom:4px;
+  color:#e30613;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.alma-used-car-clean-head h3{
+  margin:0 !important;
+  color:#111827 !important;
+  font-size:25px !important;
+  line-height:1.2;
+}
+
+.alma-used-car-clean-head p{
+  margin:6px 0 0 !important;
+  color:#64748b !important;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.alma-used-car-clean-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  padding:26px;
+}
+
+.alma-used-car-clean-grid label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin:0 !important;
+}
+
+.alma-used-car-clean-grid label > span{
+  color:#334155;
+  font-size:12px;
+  font-weight:800;
+}
+
+.alma-used-car-clean-grid input,
+.alma-used-car-clean-grid textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin:0 !important;
+  padding:13px 14px !important;
+  border:1px solid #dbe1e8 !important;
+  border-radius:11px !important;
+  outline:none;
+  background:#ffffff !important;
+  color:#111827 !important;
+  font-family:inherit;
+  font-size:14px;
+  transition:.2s ease;
+}
+
+.alma-used-car-clean-grid input:focus,
+.alma-used-car-clean-grid textarea:focus{
+  border-color:#e30613 !important;
+  box-shadow:0 0 0 3px rgba(227,6,19,.08);
+}
+
+.alma-used-car-clean-grid textarea{
+  min-height:115px;
+  resize:vertical;
+}
+
+.alma-used-car-wide{
+  grid-column:1/-1;
+}
+
+.alma-used-car-clean-grid small{
+  color:#94a3b8;
+  font-size:11px;
+  font-weight:500;
+  line-height:1.5;
+}
+
+.alma-price-input{
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid #dbe1e8;
+  border-radius:11px;
+  background:#ffffff;
+}
+
+.alma-price-input:focus-within{
+  border-color:#e30613;
+  box-shadow:0 0 0 3px rgba(227,6,19,.08);
+}
+
+.alma-price-input strong{
+  align-self:stretch;
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  border-right:1px solid #e5e7eb;
+  background:#f8fafc;
+  color:#475569;
+  font-size:13px;
+}
+
+.alma-price-input input{
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+.alma-used-car-upload{
+  padding:14px;
+  border:1px dashed #cbd5e1;
+  border-radius:13px;
+  background:#f8fafc;
+}
+
+.alma-used-car-upload input{
+  padding:10px !important;
+  background:#ffffff !important;
+}
+
+.alma-used-car-upload small{
+  display:block;
+  margin-top:7px;
+}
+
+.alma-used-car-clean-preview{
+  grid-column:1/-1;
+  overflow:hidden;
+  max-width:420px;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  background:#f8fafc;
+}
+
+.alma-used-car-clean-preview img{
+  display:block;
+  width:100%;
+  max-height:300px;
+  object-fit:contain;
+}
+
+.alma-used-car-clean-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 26px;
+  border-top:1px solid #eef2f7;
+  background:#f8fafc;
+}
+
+.alma-used-car-review-note{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+
+.alma-used-car-review-note > span{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#dcfce7;
+  color:#15803d;
+  font-size:12px;
+  font-weight:900;
+}
+
+.alma-used-car-review-note p{
+  margin:0 !important;
+  color:#64748b !important;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.alma-used-car-clean-submit{
+  flex:0 0 auto;
+  min-height:46px;
+  padding:12px 22px !important;
+  border:0 !important;
+  border-radius:11px !important;
+  background:#e30613 !important;
+  color:#ffffff !important;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(227,6,19,.18);
+}
+
+.alma-used-car-clean-submit:hover{
+  transform:translateY(-1px);
+  filter:brightness(.96);
+}
+
+@media(max-width:700px){
+
+  .alma-used-car-clean{
+    border-radius:18px !important;
+  }
+
+  .alma-used-car-clean-head{
+    align-items:flex-start;
+    padding:20px;
+  }
+
+  .alma-used-car-clean-icon{
+    width:46px;
+    height:46px;
+    border-radius:13px;
+    font-size:22px;
+  }
+
+  .alma-used-car-clean-grid{
+    grid-template-columns:1fr;
+    padding:20px;
+  }
+
+  .alma-used-car-wide,
+  .alma-used-car-clean-preview{
+    grid-column:auto;
+  }
+
+  .alma-used-car-clean-footer{
+    align-items:stretch;
+    flex-direction:column;
+    padding:20px;
+  }
+
+  .alma-used-car-clean-submit{
+    width:100%;
+  }
+
+}
+
