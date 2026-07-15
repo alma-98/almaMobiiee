@@ -867,22 +867,8 @@
 
       <div class="used-car-info">
 
-        <div class="fee-card">
+        
 
-          <span class="fee-label">
-            Biaya Layanan
-          </span>
-
-          <strong>
-            2,5%
-          </strong>
-
-          <p>
-            Perhitungan biaya layanan berdasarkan
-            harga kendaraan yang dimasukkan.
-          </p>
-
-        </div>
 
 
         <div class="payment-mini-card">
@@ -897,97 +883,168 @@
       </div>
 
 
-      <form
-        class="premium-form"
-        id="usedCarForm"
+      
+<form
+  class="premium-form alma-used-car-form"
+  id="usedCarForm"
+>
+
+  <div class="alma-used-car-form-header">
+
+    <span class="alma-used-car-form-label">
+      Pendaftaran Kendaraan
+    </span>
+
+    <h3>
+      Data Mobil Second
+    </h3>
+
+    <p>
+      Isi data kendaraan dengan lengkap.
+      Data akan diperiksa terlebih dahulu oleh Admin Alma
+      sebelum kendaraan diproses lebih lanjut.
+    </p>
+
+  </div>
+
+
+  <div class="two-column-form alma-used-car-fields">
+
+    <label>
+      Nama Pemilik
+
+      <input
+        type="text"
+        id="sellerName"
+        name="ownerName"
+        placeholder="Nama lengkap pemilik kendaraan"
+        autocomplete="name"
+        required
+      >
+    </label>
+
+
+    <label>
+      Nomor HP
+
+      <input
+        type="tel"
+        id="sellerPhone"
+        name="phone"
+        placeholder="Contoh: 081234567890"
+        autocomplete="tel"
+        required
+      >
+    </label>
+
+
+    <label>
+      Merek & Tipe Mobil
+
+      <input
+        type="text"
+        id="sellerCar"
+        name="car"
+        placeholder="Contoh: Toyota Avanza G"
+        required
+      >
+    </label>
+
+
+    <label>
+      Tahun Kendaraan
+
+      <input
+        type="number"
+        id="sellerYear"
+        name="year"
+        placeholder="Contoh: 2022"
+        min="1980"
+        max="2030"
+        required
+      >
+    </label>
+
+
+    <label class="alma-used-car-full">
+      Harga Penawaran
+
+      <input
+        type="number"
+        id="sellerPrice"
+        name="price"
+        placeholder="Contoh: 250000000"
+        min="1"
+        inputmode="numeric"
+        required
       >
 
-        <h3>
-          Data Kendaraan
-        </h3>
-
-        <div class="two-column-form">
-
-          <label>
-            Nama Pemilik
-            <input
-              type="text"
-              id="sellerName"
-              required
-            >
-          </label>
-
-          <label>
-            Nomor HP
-            <input
-              type="tel"
-              id="sellerPhone"
-              required
-            >
-          </label>
-
-        </div>
+      <small class="alma-field-help">
+        Masukkan harga kendaraan dalam Rupiah tanpa titik atau koma.
+      </small>
+    </label>
 
 
-        <label>
-          Merek & Tipe Mobil
-          <input
-            type="text"
-            id="sellerCar"
-            placeholder="Contoh: Toyota Avanza G"
-            required
-          >
-        </label>
+    <label class="alma-used-car-full">
+      Foto Kendaraan
+
+      <input
+        type="file"
+        id="sellerImage"
+        name="image"
+        accept="image/jpeg,image/png,image/webp"
+      >
+
+      <small class="alma-field-help">
+        Upload foto utama kendaraan agar proses review lebih mudah.
+      </small>
+    </label>
 
 
-        <div class="two-column-form">
-
-          <label>
-            Tahun
-            <input
-              type="number"
-              id="sellerYear"
-              required
-            >
-          </label>
-
-          <label>
-            Harga Mobil
-            <input
-              type="number"
-              id="sellerPrice"
-              min="1"
-              required
-            >
-          </label>
-
-        </div>
+    <div
+      id="sellerImagePreview"
+      class="alma-used-car-image-preview"
+      hidden
+    >
+      <img
+        id="sellerImagePreviewImg"
+        alt="Preview foto kendaraan"
+      >
+    </div>
 
 
-        <div
-          class="fee-calculator"
-          id="sellerFeeBox"
-        >
+    <label class="alma-used-car-full">
+      Kondisi / Catatan Kendaraan
 
-          <span>
-            Estimasi biaya layanan 2,5%
-          </span>
+      <textarea
+        id="sellerNotes"
+        name="notes"
+        rows="5"
+        placeholder="Contoh: Pajak hidup, servis rutin, pemakaian pribadi, kondisi interior dan eksterior..."
+      ></textarea>
+    </label>
 
-          <strong id="sellerFee">
-            Rp0
-          </strong>
-
-        </div>
+  </div>
 
 
-        <button
-          type="submit"
-          class="form-submit-button"
-        >
-          Daftarkan Mobil untuk Review
-        </button>
+  <div class="alma-used-car-submit-area">
 
-      </form>
+    <button
+      type="submit"
+      class="alma-used-car-submit"
+    >
+      Kirim untuk Review
+    </button>
+
+    <p>
+      Pengiriman formulir tidak memerlukan pembayaran.
+      Admin Alma akan melakukan review terhadap data kendaraan.
+    </p>
+
+  </div>
+
+</form>
+
 
     </div>
 

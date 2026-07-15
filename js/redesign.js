@@ -533,101 +533,16 @@
   }
 
 
-  const usedCarForm =
-    document.getElementById(
-      "usedCarForm"
-    );
+  
 
-  if(usedCarForm){
+  /*
+    USED CAR FORM:
+    Submit dikelola oleh firebase-app.js.
+    Tidak ada pembayaran saat pendaftaran.
+  */
 
-    usedCarForm.addEventListener(
-      "submit",
-      function(event){
 
-        event.preventDefault();
 
-        const price =
-          Number(
-            document
-              .getElementById(
-                "sellerPrice"
-              )
-              .value
-          );
-
-        const fee =
-          Math.round(
-            price * 0.025
-          );
-
-        const id =
-          generateId("USED");
-
-        const submissions =
-          JSON.parse(
-            localStorage.getItem(
-              "almaUsedCars"
-            ) || "[]"
-          );
-
-        submissions.push({
-
-          id:id,
-
-          name:
-            document
-              .getElementById(
-                "sellerName"
-              )
-              .value,
-
-          phone:
-            document
-              .getElementById(
-                "sellerPhone"
-              )
-              .value,
-
-          car:
-            document
-              .getElementById(
-                "sellerCar"
-              )
-              .value,
-
-          year:
-            document
-              .getElementById(
-                "sellerYear"
-              )
-              .value,
-
-          price:price,
-
-          fee:fee,
-
-          status:
-            "Menunggu Pembayaran"
-
-        });
-
-        localStorage.setItem(
-          "almaUsedCars",
-          JSON.stringify(
-            submissions
-          )
-        );
-
-        openPayment(
-          "Biaya Layanan Mobil Second",
-          fee,
-          id
-        );
-
-      }
-    );
-
-  }
 
 
   /* MEDIATOR */

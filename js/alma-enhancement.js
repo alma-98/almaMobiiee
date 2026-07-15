@@ -125,44 +125,6 @@
         return;
       }
 
-      let feeBox =
-        document.getElementById(
-          "almaUsedCarFeeResult"
-        );
-
-      if(!feeBox){
-
-        feeBox =
-          document.createElement("div");
-
-        feeBox.id =
-          "almaUsedCarFeeResult";
-
-        feeBox.className =
-          "alma-fee-result";
-
-        feeBox.innerHTML = `
-          <small>
-            Estimasi biaya layanan 2,5%
-          </small>
-
-          <strong id="almaUsedCarFee">
-            Rp0
-          </strong>
-
-          <span>
-            Dihitung otomatis dari harga kendaraan.
-          </span>
-        `;
-
-        priceInput
-          .parentElement
-          .insertAdjacentElement(
-            "afterend",
-            feeBox
-          );
-
-      }
 
       const output =
         document.getElementById(
