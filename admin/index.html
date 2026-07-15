@@ -311,6 +311,68 @@ button{
 
   </main>
 
+<div
+  id="insuranceOrdersPanel"
+  style="
+    display:none;
+    max-width:1200px;
+    margin:0 auto 30px;
+    padding:0 20px;
+  "
+>
+  <div
+    style="
+      background:#fff;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 8px 30px rgba(15,23,42,.06);
+    "
+  >
+    <h2>
+      Pengajuan Asuransi
+    </h2>
+
+    <div
+      style="overflow:auto"
+    >
+      <table
+        style="
+          width:100%;
+          border-collapse:collapse;
+        "
+      >
+        <thead>
+          <tr>
+            <th style="padding:10px;text-align:left">
+              ID
+            </th>
+            <th style="padding:10px;text-align:left">
+              Pelanggan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Kendaraan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Perlindungan
+            </th>
+            <th style="padding:10px;text-align:left">
+              Status
+            </th>
+            <th style="padding:10px;text-align:left">
+              Aksi
+            </th>
+          </tr>
+        </thead>
+
+        <tbody id="insuranceOrdersTable">
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
 </section>
 
 <script>
@@ -389,6 +451,201 @@ if(
   ) === "authenticated"
 ){
   showDashboard();
+}
+</script>
+
+
+<script>
+function getAlmaInsuranceOrders(){
+  try{
+    return JSON.parse(
+      localStorage.getItem(
+        "alma_insurance_orders"
+      )
+    ) || [];
+  }catch(error){
+    return [];
+  }
+}
+
+function saveAlmaInsuranceOrders(
+  orders
+){
+  localStorage.setItem(
+    "alma_insurance_orders",
+    JSON.stringify(orders)
+  );
+}
+
+function showInsuranceOrders(){
+  const panel =
+    document.getElementById(
+      "insuranceOrdersPanel"
+    );
+
+  if(!panel){
+    return;
+  }
+
+  panel.style.display =
+    "block";
+
+  renderInsuranceOrders();
+
+  panel.scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function renderInsuranceOrders(){
+  const table =
+    document.getElementById(
+      "insuranceOrdersTable"
+    );
+
+  if(!table){
+    return;
+  }
+
+  const orders =
+    getAlmaInsuranceOrders();
+
+  if(!orders.length){
+    table.innerHTML =
+      '<tr>' +
+      '<td colspan="6" ' +
+      'style="padding:20px">' +
+      'Belum ada pengajuan asuransi.' +
+      '</td>' +
+      '</tr>';
+
+    return;
+  }
+
+  table.innerHTML =
+    orders.map(
+      function(order){
+
+        return (
+          '<tr>' +
+
+          '<td style="padding:10px">' +
+          order.id +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+          order.customer +
+          '<br><small>' +
+          order.phone +
+          '</small></td>' +
+
+          '<td style="padding:10px">' +
+          order.vehicle +
+          '<br><small>' +
+          order.year +
+          '</small></td>' +
+
+          '<td style="padding:10px">' +
+          order.coverage +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+          order.status +
+          '</td>' +
+
+          '<td style="padding:10px">' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Diproses')" +
+          '">' +
+          'Proses' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Penawaran Dikirim')" +
+          '">' +
+          'Penawaran' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "updateInsuranceStatus('" +
+          order.id +
+          "','Selesai')" +
+          '">' +
+          'Selesai' +
+          '</button>' +
+
+          '<button ' +
+          'onclick="' +
+          "deleteInsuranceOrder('" +
+          order.id +
+          "')" +
+          '">' +
+          'Hapus' +
+          '</button>' +
+
+          '</td>' +
+
+          '</tr>'
+        );
+      }
+    ).join("");
+}
+
+function updateInsuranceStatus(
+  id,
+  status
+){
+  const orders =
+    getAlmaInsuranceOrders();
+
+  const order =
+    orders.find(
+      function(item){
+        return item.id === id;
+      }
+    );
+
+  if(order){
+    order.status = status;
+
+    saveAlmaInsuranceOrders(
+      orders
+    );
+
+    renderInsuranceOrders();
+  }
+}
+
+function deleteInsuranceOrder(id){
+  if(
+    !confirm(
+      "Hapus pengajuan asuransi ini?"
+    )
+  ){
+    return;
+  }
+
+  const orders =
+    getAlmaInsuranceOrders()
+      .filter(
+        function(item){
+          return item.id !== id;
+        }
+      );
+
+  saveAlmaInsuranceOrders(
+    orders
+  );
+
+  renderInsuranceOrders();
 }
 </script>
 
